@@ -7,7 +7,7 @@ function* loginApi(userName: String, password: String) {
   const { response, error } = yield call(login('a', 'b'))
   if (response){
     console.log(response)
-    yield put({ type: 'counter/increment', payload: 2})
+    yield put({ type: 'login/increment', payload: 2})
     //yield put({ type: 'LOGIN_SUCCESS', products: response })
   }
   else
