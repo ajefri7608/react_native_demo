@@ -7,6 +7,7 @@ import {
   Text
 } from 'react-native';
 import { login } from '../../webService/webServices';
+import { loginApi } from '../../redux/sagas/loginBoxSaga';
 export function Counter() {
   const count = useSelector((state: any) => state.counter.value)
   const dispatch = useDispatch()
@@ -33,8 +34,8 @@ export function Counter() {
         >
         </Button>
         <Button
-          title="Increase By Amount"
-          onPress={() => login("a", "b")}
+          title="login api call"
+          onPress={() => dispatch()}
         >
         </Button>
       </View>
