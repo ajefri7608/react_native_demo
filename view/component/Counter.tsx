@@ -1,12 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '../../redux/slice/counterSlice'
+import { decrement, increment, incrementByAmount } from '../../redux/slice/counterSlice'
 import {
   View,
   Button,
   Text
 } from 'react-native';
-
+import { login } from '../../webService/webServices';
 export function Counter() {
   const count = useSelector((state: any) => state.counter.value)
   const dispatch = useDispatch()
@@ -26,6 +26,16 @@ export function Counter() {
           onPress={() => dispatch(decrement())}
         >
           Decrement
+        </Button>
+        <Button
+          title="Increase By Amount"
+          onPress={() => dispatch(incrementByAmount(2))}
+        >
+        </Button>
+        <Button
+          title="Increase By Amount"
+          onPress={() => login("a", "b")}
+        >
         </Button>
       </View>
     </View>
