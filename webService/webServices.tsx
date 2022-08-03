@@ -17,7 +17,7 @@ import axiosInstance from "./axiosInstance";
 // }
 
 
-function login(userName: String, password: String) {
+export function login(userName: String, password: String) {
     return axiosInstance.post('users/login', {
         "userName": "root1",
         "email": "ajefri76108@gmail.com",
@@ -31,7 +31,4 @@ function login(userName: String, password: String) {
             return error
         })
 
-}
-export {
-    login
 }
