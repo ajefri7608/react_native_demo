@@ -29,20 +29,25 @@ const HomePage = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.red : Colors.blue,
+    backgroundColor: isDarkMode ? Colors.red : Colors.red,
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+
+
+    <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      style={backgroundStyle}>
+      <View style={{backgroundColor:'rgba(52, 52, 52, 0.8)'}}>
+        <Text>
+          asda
+        </Text>
+      </View>
 
 
 
-      </ScrollView>
-    </SafeAreaView>
+    </ScrollView>
+
   );
 };
 

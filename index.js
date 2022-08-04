@@ -12,9 +12,7 @@ import {
 
 const RNRedux = () => (
   <Provider store={configureStore}>
-
       <App />
-
   </Provider>
 )
 
