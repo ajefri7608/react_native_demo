@@ -17,35 +17,32 @@ import {
   Text,
   useColorScheme,
   View,
-  Button,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
 import Counter from '../component/Counter';
 
-const LoginPage = ({ navigation }: any) => {
+const HomePage = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.red : Colors.blue,
   };
+
   return (
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
 
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      style={backgroundStyle}>
 
-      <Counter />
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Home')}
-      />
-    </ScrollView>
 
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -68,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginPage;
+export default HomePage;

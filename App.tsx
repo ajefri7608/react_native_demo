@@ -10,21 +10,15 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
-
-  StatusBar,
   StyleSheet,
-
   useColorScheme,
-
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import {
-  Colors,
-
-} from 'react-native/Libraries/NewAppScreen';
 import LoginPage from './view/page/LoginPage';
-
+import HomePage from './view/page/HomePage';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // const Section: React.FC<{
 //   title: string;
 // }> = ({children, title}) => {
@@ -53,18 +47,26 @@ import LoginPage from './view/page/LoginPage';
 //   );
 // };
 
+
+const Tab = createBottomTabNavigator();
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <LoginPage />
-    </SafeAreaView>
+
+      <NavigationContainer>
+        <Tab.Navigator initialRouteName="Login">
+          <Tab.Screen name="Login"
+            component={LoginPage} />
+          <Tab.Screen
+            name="Home"
+            component={HomePage}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+
   );
 };
 

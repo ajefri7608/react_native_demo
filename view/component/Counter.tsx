@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, incrementByAmount } from '../../redux/slice/counterSlice'
+import { NavigationContainer } from '@react-navigation/native';
 import {
   View,
   Button,
@@ -35,6 +36,11 @@ export function Counter() {
         </Button>
         <Button
           title="login api call"
+          onPress={() => dispatch(login(2))}
+        >
+        </Button>
+        <Button
+          title="go home page"
           onPress={() => dispatch(login(2))}
         >
         </Button>

@@ -6,12 +6,16 @@ import { Provider } from 'react-redux';
 import App from './App';
 
 import configureStore from './redux/store/configureStore';
-
+import {
+  SafeAreaView,
+} from 'react-native';
 
 const RNRedux = () => (
-    <Provider store = { configureStore }>
+  <Provider store={configureStore}>
+
       <App />
-    </Provider>
-  )
-  
-  AppRegistry.registerComponent(appName, () => RNRedux);
+
+  </Provider>
+)
+
+AppRegistry.registerComponent(appName, () => RNRedux);
