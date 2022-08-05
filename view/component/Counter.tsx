@@ -7,7 +7,7 @@ import {
   Button,
   Text
 } from 'react-native';
-import { login } from '../../redux/slice/loginBoxSlice';
+import { login } from '../../redux/slice/userSlice';
 export function Counter() {
   const count = useSelector((state: any) => state.counter.value)
   const test = useSelector((state: any) => state.loginBox.value)
@@ -36,12 +36,12 @@ export function Counter() {
         </Button>
         <Button
           title="login api call"
-          onPress={() => dispatch(login(2))}
+          onPress={() => dispatch(login({userName: "a", password: "b"}))}
         >
         </Button>
         <Button
           title="go home page"
-          onPress={() => dispatch(login(2))}
+          onPress={() => dispatch(incrementByAmount(2))}
         >
         </Button>
       </View>
