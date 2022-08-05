@@ -10,14 +10,14 @@
 
 import React from 'react';
 
-import CustomBottomTabBar from './navigationBar/CustomBottomTabBar';
+import MyBottomTabNavigator from './navigationBar/MyBottomTabNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
 
   return (
     <NavigationContainer>
-      <CustomBottomTabBar />
+      <MyBottomTabNavigator />
     </NavigationContainer>
   );
   
