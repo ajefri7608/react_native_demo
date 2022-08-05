@@ -25,31 +25,32 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Counter from '../component/Counter';
+import LoginBox from '../component/LoginBox';
 
 const LoginPage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  // const backgroundStyle = {
+  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  // };
   return (
 
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      style={backgroundStyle}>
+    <View style={styles.pageContainer}>
 
-      <Counter />
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Home')}
-      />
-    </ScrollView>
+      <LoginBox />
+
+    </View>
 
   );
 };
 
 const styles = StyleSheet.create({
+  pageContainer: {
+    flex:1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff'
+  }
 
 });
 

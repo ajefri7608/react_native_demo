@@ -17,57 +17,41 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from 'react-native';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Counter from '../component/Counter';
+import LoginBox from '../component/LoginBox';
 
-const TestPage = () => {
+const LoginPage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.red : Colors.red,
-  };
-
+  // const backgroundStyle = {
+  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  // };
   return (
 
+    <View style={styles.pageContainer}>
 
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      style={backgroundStyle}>
-      <View style={{backgroundColor:'rgba(52, 52, 52, 0.8)'}}>
-        <Text>
-          asda
-        </Text>
-      </View>
+      <LoginBox />
 
-
-
-    </ScrollView>
+    </View>
 
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  pageContainer: {
+    flex:1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff'
+  }
+
 });
 
-export default TestPage;
+export default LoginPage;

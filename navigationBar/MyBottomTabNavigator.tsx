@@ -38,7 +38,8 @@ const MyBottomTabNavigator = () => {
   return (
 
     <Tab.Navigator
-      initialRouteName="Home">
+      initialRouteName="Home"
+      screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="Home"
         component={HomePage}
