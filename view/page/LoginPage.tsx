@@ -18,6 +18,7 @@ import {
   useColorScheme,
   View,
   Button,
+  ImageBackground,
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -30,27 +31,28 @@ import LoginBox from '../component/LoginBox';
 const LoginPage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
   return (
 
-    <View style={styles.pageContainer}>
+    <ImageBackground
+      source={require("../../assets/background/login_backgorund.jpg")}
+      style={styles.pageContainer}
+      blurRadius={5}>
 
       <LoginBox />
 
-    </View>
+    </ImageBackground>
 
   );
 };
 
 const styles = StyleSheet.create({
   pageContainer: {
-    flex:1,
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#ffffff'
-  }
+  },
+
+
 
 });
 

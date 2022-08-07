@@ -25,7 +25,8 @@ const IconComponent = ({name, imagePath, focused} : any) => {
       </Image>
       <Text
         style={{
-          color: focused ? '#e32f45' : '#748c94'
+          color: focused ? '#e32f45' : '#748c94',
+          fontSize: 9
         }}
       >
         {name}

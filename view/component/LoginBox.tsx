@@ -9,28 +9,24 @@ import {
   StyleSheet
 } from 'react-native';
 import { login } from '../../redux/slice/userSlice';
-import { TextInput } from 'react-native-gesture-handler';
+import { Input, Icon } from '@rneui/themed';
+
 export function LoginBox() {
   const count = useSelector((state: any) => state.counter.value)
   const test = useSelector((state: any) => state.loginBox.value)
   const dispatch = useDispatch()
 
   return (
-    <View style={{ ...styles.container, ...styles.containerShadow }}>
-      <View style={styles.textFieldContainer}>
-        <TextInput
-          style={styles.textField} />
-        <TextInput />
-
-      </View>
+    <View style={{ ...styles.container }}>
+<Input placeholder="Password" secureTextEntry={true} />
     </View>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ffffff',
-    flex: 1,
-    height:100,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    //backgroundColor:"#242134",
+    height:250,
     flexDirection: 'column',
     borderRadius: 30,
     marginHorizontal: 20,
