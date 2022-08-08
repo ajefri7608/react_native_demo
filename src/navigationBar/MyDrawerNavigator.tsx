@@ -1,5 +1,5 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import TestPage from '../view/page/TestPage';
+import TestPage from '~/view/page/TestPage';
 const Drawer = createDrawerNavigator();
 
 function MyDrawerNavigator() {

@@ -2128,6 +2128,13 @@
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.3.1"
 
+"babel-plugin-root-import@^6.6.0":
+  "integrity" "sha512-SPzVOHd7nDh5loZwZBxtX/oOu1MXeKjTkz+1VnnzLWC0dk8sJIGC2IDQ2uWIBjE5mUtXlQ35MTHSqN0Xn7qHrg=="
+  "resolved" "https://registry.npmjs.org/babel-plugin-root-import/-/babel-plugin-root-import-6.6.0.tgz"
+  "version" "6.6.0"
+  dependencies:
+    "slash" "^3.0.0"
+
 "babel-plugin-syntax-trailing-function-commas@^7.0.0-beta.0":
   "integrity" "sha512-Xj9XuRuz3nTSbaTXWv3itLOcxyF4oPD8douBBmj7U9BBC6nEBYfyOJYQMf/8PJAFotC62UY5dFfIGEPr7WswzQ=="
   "resolved" "https://registry.npmjs.org/babel-plugin-syntax-trailing-function-commas/-/babel-plugin-syntax-trailing-function-commas-7.0.0-beta.0.tgz"
@@ -6084,7 +6091,9 @@
   "version" "1.2.1"
 
 "react-devtools-core@^4.23.0":
-  "version" "4.14.0"
+  "integrity" "sha512-iewRrnu0ZnmfL+jJayKphXj04CFh6i3ezVnpCtcnZbTPSQgN09XqHAzXbKbqNDl7aTg9QLNkQRP6M3DvdrinWA=="
+  "resolved" "https://registry.npmjs.org/react-devtools-core/-/react-devtools-core-4.25.0.tgz"
+  "version" "4.25.0"
   dependencies:
     "shell-quote" "^1.6.1"
     "ws" "^7"
@@ -7662,10 +7671,15 @@
   dependencies:
     "async-limiter" "~1.0.0"
 
-"ws@^7", "ws@^7.4.6", "ws@^7.5.1":
+"ws@^7.4.6", "ws@^7.5.1":
   "integrity" "sha512-ri1Id1WinAX5Jqn9HejiGb8crfRio0Qgu8+MtL36rlTA6RLsMdWt1Az/19A2Qij6uSHUMphEFaTKa4WG+UNHNw=="
   "resolved" "https://registry.npmjs.org/ws/-/ws-7.5.8.tgz"
   "version" "7.5.8"
+
+"ws@^7":
+  "integrity" "sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q=="
+  "resolved" "https://registry.npmjs.org/ws/-/ws-7.5.9.tgz"
+  "version" "7.5.9"
 
 "xcode@^3.0.0":
   "integrity" "sha512-kCz5k7J7XbJtjABOvkc5lJmkiDh8VhjVCGNiqdKCscmVpdVUpEAyXv1xmCLkQJ5dsHqx3IPO4XW+NTDhU/fatA=="

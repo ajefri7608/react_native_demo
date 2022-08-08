@@ -11,6 +11,19 @@ module.exports = {
           version: '7.0.0-beta.0',
       },
   ],
+  [
+    'babel-plugin-root-import',
+    {
+      rootPathPrefix: '~',
+      rootPathSuffix: 'src',
+    },
+  ],
   'react-native-reanimated/plugin',
   ],
+};
+
+const rootImportOpts = {
+  root: __dirname,
+  rootPathPrefix: '~/',
+  rootPathSuffix: 'src/js',
 };

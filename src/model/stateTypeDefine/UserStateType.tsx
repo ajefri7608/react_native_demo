@@ -1,4 +1,4 @@
-import { LoginResponse } from "../response/LoginResponse";
+import { LoginResponse } from "~/model/response/LoginResponse";
 
 export type UserStateType = {
     memberProfile: LoginResponse | null;

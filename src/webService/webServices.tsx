@@ -1,6 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { GernalResponse } from "../model/response/GeneralResponse";
-import { LoginResponse } from "../model/response/LoginResponse";
+
 import axiosInstance from "./axiosInstance";
 
 

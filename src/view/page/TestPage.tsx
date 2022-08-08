@@ -25,7 +25,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import LoginBox from '../component/LoginBox';
+import LoginBox from '~/view/component/LoginBox';
 
 const LoginPage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';

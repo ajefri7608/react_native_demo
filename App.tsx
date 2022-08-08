@@ -10,7 +10,7 @@
 
 import React from 'react';
 
-import MyBottomTabNavigator from './navigationBar/MyBottomTabNavigator';
+import MyBottomTabNavigator from './src/navigationBar/MyBottomTabNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {

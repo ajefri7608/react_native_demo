@@ -8,20 +8,28 @@
  * @format
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
   StyleSheet,
+  Text,
   useColorScheme,
   View,
+  Button,
 } from 'react-native';
-import LoginBox from '../component/LoginBox';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  Colors,
+} from 'react-native/Libraries/NewAppScreen';
+
+import LoginBox from '~/view/component/LoginBox';
 
 const LoginPage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
   return (
 
     <View style={styles.pageContainer}>

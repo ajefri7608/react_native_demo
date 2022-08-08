@@ -1,8 +1,8 @@
-import { login } from '../../webService/webServices';
+import { login } from '~/webService/webServices';
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { PayloadAction } from "@reduxjs/toolkit";
-import { AxiosGernalResponse } from '../../model/response/AxiosGeneralResponse';
-import { LoginResponse } from '../../model/response/LoginResponse';
+import { AxiosGernalResponse } from '~/model/response/AxiosGeneralResponse';
+import { LoginResponse } from '~/model/response/LoginResponse';
 
 function* loginApi(action: PayloadAction<{ userName: string, password: string }>) {
 

@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import LoginPage from '../view/page/LoginPage';
-import HomePage from '../view/page/HomePage';
-import ProfilePage from '../view/page/ProfilePage';
+import LoginPage from '~/view/page/LoginPage';
+import HomePage from '~/view/page/HomePage';
+import ProfilePage from '~/view/page/ProfilePage';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -49,7 +49,7 @@ const MyBottomTabNavigator = () => {
           tabBarIcon: ({ focused }) => (
             <IconComponent
               name= "Home"
-              imagePath= {require("../assets/icons/icon_home.png")}
+              imagePath= {require("~/assets/icons/icon_home.png")}
               focused= {focused}
             />
           )
@@ -62,7 +62,7 @@ const MyBottomTabNavigator = () => {
           tabBarIcon: ({ focused }) => (
             <View style={{ ...styles.iconContainer, ...styles.middleIconContainer }}>
               <Image
-                source={require('../assets/icons/icon_plus.png')}
+                source={require('~/assets/icons/icon_plus.png')}
                 resizeMode="contain"
                 style={{
                   ...styles.middleIconImage,
@@ -84,7 +84,7 @@ const MyBottomTabNavigator = () => {
           tabBarIcon: ({ focused }) => (
             <IconComponent
               name= "Profile"
-              imagePath= {require("../assets/icons/icon_profile.png")}
+              imagePath= {require("~/assets/icons/icon_profile.png")}
               focused= {focused}
             />
           )

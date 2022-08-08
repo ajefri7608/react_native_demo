@@ -1,8 +1,8 @@
 import { configureStore, applyMiddleware} from '@reduxjs/toolkit'
-import counterReducer from '../slice/counterSlice'
-import userReducer from '../slice/userSlice'
+import counterReducer from '~/redux/slice/counterSlice'
+import userReducer from '~/redux/slice/userSlice'
 import createSagaMiddleware from 'redux-saga'
-import rootSaga from '../sagas/rootSaga'
+import rootSaga from '~/redux/sagas/rootSaga'
 
 
 const sagaMiddleware = createSagaMiddleware()

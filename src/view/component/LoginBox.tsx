@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { userNameOnChange, passwordOnChange } from '../../redux/slice/userSlice';
-import { useAppSelector, useAppDispatch } from '../../redux/hook'
+import { userNameOnChange, passwordOnChange } from '~/redux/slice/userSlice';
+import { useAppSelector, useAppDispatch } from '~/redux/hook'
 import {
   View,
   Button,
@@ -9,7 +9,7 @@ import {
   StyleSheet,
   TextInput
 } from 'react-native';
-import { login } from '../../redux/slice/userSlice';
+import { login } from '~/redux/slice/userSlice';
 export function LoginBox() {
   const userName = useAppSelector(state => state.user.userName)
   const password = useAppSelector(state => state.user.password)
