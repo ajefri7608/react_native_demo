@@ -30,9 +30,6 @@ import LoginBox from '../component/LoginBox';
 const LoginPage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
   return (
 
     <View style={styles.pageContainer}>

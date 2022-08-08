@@ -6,16 +6,23 @@ import axiosInstance from "./axiosInstance";
 
 export function login(userName: string, password: string) {
     return axiosInstance.post('users/login', {
-        "userName": "root1",
+        "userName": userName,
         "email": "ajefri76108@gmail.com",
-        "password": "root",
+        "password": password,
         "name": "jefri",
         "userRole": "admin",
     }).then((response: AxiosResponse) => {
         //TODO login api response logic
-        return ({ response })
+        if(response.status == 200){
+            return ({ response })
+        }else{
+            //TODO 404 global dialog
+        }
+        
     }).catch((error: Error) => {
         //TODO login api response error
         return ({ error })
     })
 }
+//"userName": "root1",
+//"password": "root",

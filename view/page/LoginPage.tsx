@@ -8,23 +8,12 @@
  * @format
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
-  Button,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
 import LoginBox from '../component/LoginBox';
 
 const LoginPage = ({ navigation }: any) => {

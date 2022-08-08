@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AxiosResponse } from "axios";
 import { LoginResponse } from "../../model/response/LoginResponse";
 import { UserStateType } from "../../model/stateTypeDefine/UserStateType";
 
