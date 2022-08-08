@@ -4,5 +4,5 @@ export type UserStateType = {
     memberProfile: LoginResponse | null;
     isLogin: Boolean | null;
     userName: string | "",
-    password: string | null
+    password: string | ""
 }

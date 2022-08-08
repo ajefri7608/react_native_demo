@@ -1,8 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, incrementByAmount } from '../../redux/slice/counterSlice'
 import { userNameOnChange, passwordOnChange } from '../../redux/slice/userSlice';
-import { NavigationContainer } from '@react-navigation/native';
+import { useAppSelector, useAppDispatch } from '../../redux/hook'
 import {
   View,
   Button,
@@ -12,24 +11,24 @@ import {
 } from 'react-native';
 import { login } from '../../redux/slice/userSlice';
 export function LoginBox() {
-  const userName = useSelector((state: any) => state.user.userName)
-  const password = useSelector((state: any) => state.user.password)
-  const memberProfile = useSelector((state: any) => state.user.memberProfile)
-  const isLogin = useSelector((state: any) => state.user.isLogin)
-  const dispatch = useDispatch()
+  const userName = useAppSelector(state => state.user.userName)
+  const password = useAppSelector(state => state.user.password)
+  const memberProfile = useAppSelector(state  => state.user.memberProfile)
+  const isLogin = useAppSelector(state => state.user.isLogin)
+  const dispatch = useAppDispatch()
 
   return (
     <View style={{ ...styles.container, ...styles.containerShadow }}>
       <View style={styles.textFieldContainer}>
         <TextInput
-          style={{}}
+          style={{fontSize: 21}}
           onChangeText={(text) => dispatch(userNameOnChange(text))}
           value={userName}
           placeholder="type your userName"
           keyboardType="numeric"
         />
         <TextInput
-          style={{}}
+          style={{fontSize: 21}}
           onChangeText={(text) => dispatch(passwordOnChange(text))}
           value={password}
           placeholder="type your password"
@@ -58,7 +57,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     borderRadius: 30,
     marginHorizontal: 20,
-    paddingVertical: 10
+    paddingVertical: 10,
+
+
   },
   containerShadow: {
     shadowColor: "#000",
@@ -71,7 +72,8 @@ const styles = StyleSheet.create({
     elevation: 13,
   },
   textFieldContainer: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   textField: {
     height: 40,

@@ -19,7 +19,7 @@ export function login(userName: string, password: string) {
             //TODO 404 global dialog
         }
         
-    }).catch((error: Error) => {
+    }).catch((error: AxiosError) => {
         //TODO login api response error
         return ({ error })
     })

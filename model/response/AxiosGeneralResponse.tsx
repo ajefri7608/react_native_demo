@@ -1,8 +1,8 @@
-import { AxiosResponse } from "axios";
+import { AxiosResponse ,AxiosError} from "axios";
 import { GernalResponse } from "./GeneralResponse";
 
 
-export type AxiosGernalResponse = {
-    response: AxiosResponse<GernalResponse<Object>>
-    error: Error
+export type AxiosGernalResponse<T> = {
+    response: AxiosResponse<GernalResponse<T>>
+    error: AxiosError
 }

@@ -7,7 +7,7 @@ const initialState: UserStateType = {
     memberProfile: null,
     isLogin: null,
     userName: "",
-    password: null
+    password: ""
 };
 export const userSlice = createSlice({
     name: 'user',
@@ -15,9 +15,7 @@ export const userSlice = createSlice({
     reducers: {
 
         login: (state, action: PayloadAction<{ userName: string, password: string }>) => {
-            console.log(action.payload.userName, action.payload.password)
             console.log("login processing")
-
         },
         loginSuccess: (state, action: PayloadAction<LoginResponse>) => {
             console.log(action.payload)
