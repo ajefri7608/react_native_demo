@@ -52,14 +52,12 @@ export function LoginBox() {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ffffff',
+
     height: 300,
     flexDirection: 'column',
     borderRadius: 30,
     marginHorizontal: 20,
     paddingVertical: 10,
-
-
   },
   containerShadow: {
     shadowColor: "#000",
@@ -73,7 +71,10 @@ const styles = StyleSheet.create({
   },
   textFieldContainer: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+
+    justifyContent:'center',
+    backgroundColor: '#ffffff',
   },
   textField: {
     height: 40,
