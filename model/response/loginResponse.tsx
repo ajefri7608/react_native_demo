@@ -1,12 +1,18 @@
 export type LoginResponse = {
-    id : number;
-    userName : string;
     email : string;
-    password : string;
+    id : number;
+    image : string | null;
     name : string;
-    userRole : string;
-    userAccessToken : string;
-    tokenExpireAt : string;
-    image : string;
+
+
+    password : string;
     provider : string;
+    tokenExpireAt : string | null;
+    userAccessToken : string;
+    userRole : string;
+    userName : string;
+
+
+
+
 }

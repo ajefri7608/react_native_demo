@@ -10,7 +10,7 @@ const sagaMiddleware = createSagaMiddleware()
 export default configureStore({
   reducer: {
     counter: counterReducer,
-    loginBox: userReducer
+    user: userReducer
   },
   middleware: [sagaMiddleware]
 },)
