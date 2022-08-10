@@ -6,11 +6,10 @@ import LoginPage from '~/view/page/LoginPage';
 import HomePage from '~/view/page/HomePage';
 import ProfilePage from '~/view/page/ProfilePage';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-
 const Tab = createBottomTabNavigator();
 
 
-const IconComponent = ({name, imagePath, focused} : any) => {
+const IconComponent = ({ name, imagePath, focused }: any) => {
 
   return (
     <View style={styles.iconContainer}>
@@ -39,7 +38,8 @@ const MyBottomTabNavigator = () => {
 
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{ headerShown: true }}
+      id="myBottomTab">
       <Tab.Screen
         name="Home"
         component={HomePage}
@@ -48,9 +48,9 @@ const MyBottomTabNavigator = () => {
           tabBarStyle: { ...styles.tabBarContainer, ...styles.shadow },
           tabBarIcon: ({ focused }) => (
             <IconComponent
-              name= "Home"
-              imagePath= {require("~/assets/icons/icon_home.png")}
-              focused= {focused}
+              name="Home"
+              imagePath={require("~/assets/icons/icon_home.png")}
+              focused={focused}
             />
           )
         }}
@@ -83,13 +83,17 @@ const MyBottomTabNavigator = () => {
           tabBarStyle: { ...styles.tabBarContainer, ...styles.shadow },
           tabBarIcon: ({ focused }) => (
             <IconComponent
-              name= "Profile"
-              imagePath= {require("~/assets/icons/icon_profile.png")}
-              focused= {focused}
+              name="Profile"
+              imagePath={require("~/assets/icons/icon_profile.png")}
+              focused={focused}
             />
-          )
+          ),
         }}
+        initialParams={{ openDrawer: true}}
       />
+
+
+
     </Tab.Navigator>
 
   )

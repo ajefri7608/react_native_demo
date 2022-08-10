@@ -10,24 +10,15 @@
 
 import React, { Component } from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
   View,
   Button,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
 import LoginBox from '~/view/component/LoginBox';
 
-const LoginPage = ({ navigation }: any) => {
+const HomePage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
@@ -51,4 +42,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginPage;
+export default HomePage;

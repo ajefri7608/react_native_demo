@@ -27,7 +27,7 @@ import {
 
 import LoginBox from '~/view/component/LoginBox';
 
-const LoginPage = ({ navigation }: any) => {
+const TestPage = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   // const backgroundStyle = {
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginPage;
+export default TestPage;

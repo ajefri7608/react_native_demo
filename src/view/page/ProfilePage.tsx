@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -19,25 +19,27 @@ import {
   View,
   Button,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import { NavigationContainer, DrawerActions } from '@react-navigation/native';
 
-import LoginBox from '~/view/component/LoginBox';
 
-const LoginPage = ({ navigation }: any) => {
+const ProfilePage = ({ navigation, route }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
+  const drawerNavigation = navigation.getParent('MyDrawer');
+  useEffect (() => {
+    if(route.params?.openDrawer){
+      navigation.dispatch(DrawerActions.toggleDrawer)
+      console.log("123")
+      //drawerNavigation?.toggleDrawer()
+    }
+  })
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
+
   return (
 
     <View style={styles.pageContainer}>
 
-      <LoginBox />
+      <Button title="Open drawer" onPress={() => navigation.openDrawer()} />
+      <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
 
     </View>
 
@@ -54,4 +56,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginPage;
+export default ProfilePage;

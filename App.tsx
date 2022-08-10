@@ -11,16 +11,18 @@
 import React from 'react';
 
 import MyBottomTabNavigator from './src/navigationBar/MyBottomTabNavigator';
+import MyStackNavigator from '~/navigationBar/MyStackNavigator';
+import MyDrawerNavigator from '~/navigationBar/MyDrawerNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
 
   return (
     <NavigationContainer>
-      <MyBottomTabNavigator />
+
+      <MyDrawerNavigator/>
     </NavigationContainer>
   );
   
 };
 export default App;
-

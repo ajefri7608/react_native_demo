@@ -13,10 +13,17 @@ import {
   StyleSheet,
   useColorScheme,
   View,
+  Text
 } from 'react-native';
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import LoginBox from '~/view/component/LoginBox';
+import MyStackNavigator from '~/navigationBar/MyStackNavigator';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+
 
 const LoginPage = ({ navigation }: any) => {
+  const insets = useSafeAreaInsets();
+  //const tabBarHeight = useBottomTabBarHeight();
   const isDarkMode = useColorScheme() === 'dark';
 
   // const backgroundStyle = {
@@ -24,12 +31,15 @@ const LoginPage = ({ navigation }: any) => {
   // };
   return (
 
-    <View style={styles.pageContainer}>
+    <View style={{...styles.pageContainer}}>
 
       <LoginBox />
-
+      
+      <Text style={{bottom: insets.bottom , ...styles.test}}>123</Text>
+      
     </View>
 
+  
   );
 };
 
@@ -38,7 +48,13 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+  },
+  test: {
+    position: 'absolute',
+  
+    right:0
+
   }
 
 });
