@@ -26,11 +26,17 @@ const ProfilePage = ({ navigation, route }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
   const drawerNavigation = navigation.getParent('MyDrawer');
   useEffect (() => {
-    if(route.params?.openDrawer){
-      navigation.dispatch(DrawerActions.toggleDrawer)
-      console.log("123")
-      //drawerNavigation?.toggleDrawer()
-    }
+    navigation.addListener('focus', () => {
+
+      navigation.dispatch(DrawerActions.openDrawer)
+
+    });
+    navigation.addListener('tabPress', () => {
+
+      navigation.dispatch(DrawerActions.openDrawer)
+
+    });
+
   })
 
 
