@@ -10,6 +10,8 @@ import {
   TextInput
 } from 'react-native';
 import { login } from '~/redux/slice/userSlice';
+import { NativeModules } from 'react-native';
+const { CalendarModule } = NativeModules;
 export function LoginBox() {
   const userName = useAppSelector(state => state.user.userName)
   const password = useAppSelector(state => state.user.password)
@@ -36,8 +38,10 @@ export function LoginBox() {
         />
         <Button
           title="submit"
-          onPress={() => dispatch(login({ userName: userName, password: password }))}
+          // onPress={() => dispatch(login({ userName: userName, password: password }))}
+          onPress={() => moduleTest()}
         />
+        
         {
           isLogin ?
             (<Text>
@@ -49,6 +53,9 @@ export function LoginBox() {
       </View>
     </View>
   )
+}
+const moduleTest = () => {
+  CalendarModule.createCalendarEvent('testName', 'testLocation');
 }
 const styles = StyleSheet.create({
   container: {
