@@ -10,6 +10,7 @@ import {
   TextInput
 } from 'react-native';
 import { login } from '~/redux/slice/userSlice';
+import { multiply } from 'react_native_splash_module_splash';
 export function LoginBox() {
   const userName = useAppSelector(state => state.user.userName)
   const password = useAppSelector(state => state.user.password)
@@ -36,7 +37,10 @@ export function LoginBox() {
         />
         <Button
           title="submit"
-          onPress={() => dispatch(login({ userName: userName, password: password }))}
+          // onPress={() => dispatch(login({ userName: userName, password: password }))}
+          onPress={() => multiply(12,3).then(() => {
+            console.log("dasd")
+          })}
         />
         {
           isLogin ?

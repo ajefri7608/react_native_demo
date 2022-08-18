@@ -19,6 +19,7 @@
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
     "react": "17.0.2",
+    "react_native_splash_module_splash": "^0.1.0",
     "react-native": "0.68.2",
     "react-native-gesture-handler": "^2.5.0",
     "react-native-reanimated": "^2.9.1",
