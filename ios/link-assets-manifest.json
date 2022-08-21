@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Alegreya-Medium.ttf",
+      "sha1": "a2a25b29e9a1a1b5fe531033a021c45f2db495e7"
+    },
+    {
+      "path": "src/assets/fonts/Alegreya-Regular.ttf",
+      "sha1": "e622451ceb76126ad0ace9af57f514b0828f05b3"
+    },
+    {
+      "path": "src/assets/fonts/AlumniSansCollegiateOne-Italic.ttf",
+      "sha1": "71761cc154f239909a805272d6cf73ecada8e963"
+    }
+  ]
+}
