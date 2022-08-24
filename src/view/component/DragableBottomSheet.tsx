@@ -20,9 +20,8 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  withTiming,
 } from 'react-native-reanimated';
-import {useHeaderHeight} from '@react-navigation/elements';
+
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
 export type BottomSheetRefProps = {
@@ -30,7 +29,7 @@ export type BottomSheetRefProps = {
   isActive?: () => boolean;
 };
 
-const DragableBottomSheet = forwardRef<{}, BottomSheetRefProps>(
+const DragableBottomSheet = forwardRef<BottomSheetRefProps, {}>(
   (props, ref) => {
     const active = useSharedValue(false);
     const context = useSharedValue({y: 0});
@@ -41,11 +40,13 @@ const DragableBottomSheet = forwardRef<{}, BottomSheetRefProps>(
         context.value = {y: translationY.value};
       })
       .onUpdate(event => {
+        console.log(translationY);
         translationY.value = event.translationY + context.value.y;
-        translationY.value = Math.max(translationY.value, -SCREEN_HEIGHT + 200);
+
+        translationY.value = Math.max(translationY.value, -SCREEN_HEIGHT / 2);
       })
       .onEnd(event => {
-        if (translationY.value > -SCREEN_HEIGHT / 3) {
+        if (translationY.value > -SCREEN_HEIGHT / 2 + 100) {
           translationY.value = withSpring(0, {damping: 50});
           active.value = false;
         }
@@ -74,7 +75,7 @@ const DragableBottomSheet = forwardRef<{}, BottomSheetRefProps>(
 
     return (
       <GestureDetector gesture={gesture}>
-        <Animated.View style={[styles.footer, bottomSheetStyle]}>
+        <Animated.View style={[styles.bottomSheet, bottomSheetStyle]}>
           <View style={styles.line}></View>
         </Animated.View>
       </GestureDetector>
@@ -95,12 +96,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  footer: {
-    height: SCREEN_HEIGHT,
+  bottomSheet: {
+    height: SCREEN_HEIGHT / 2 + 100,
     width: '100%',
     position: 'absolute',
     backgroundColor: 'red',
-    top: SCREEN_HEIGHT,
+    top: SCREEN_HEIGHT - 100,
     borderRadius: 20,
   },
   text_header: {
