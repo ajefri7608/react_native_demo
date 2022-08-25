@@ -30,7 +30,7 @@ const MyBottomTabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShown: true}}
+      screenOptions={{headerShown: false}}
       id="myBottomTab">
       <Tab.Screen
         name="Home"

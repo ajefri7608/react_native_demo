@@ -38,6 +38,7 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const context = useSharedValue({y: 0});
 
     const translationY = useSharedValue(0);
+    const translationBackdrop = useSharedValue(0);
     const gesture = Gesture.Pan()
       .onStart(_ => {
         context.value = {y: translationY.value};
@@ -46,12 +47,13 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         console.log(translationY);
         translationY.value = event.translationY + context.value.y;
 
-        translationY.value = Math.max(translationY.value, -SCREEN_HEIGHT / 2);
+        translationY.value = Math.max(translationY.value, -SCREEN_HEIGHT + 100);
       })
       .onEnd(event => {
-        if (translationY.value > -SCREEN_HEIGHT / 2 + 100) {
+        if (translationY.value > -SCREEN_HEIGHT / 3) {
           translationY.value = withSpring(0, {damping: 50});
           active.value = false;
+          translationBackdrop.value = 0;
         }
       });
 
@@ -60,10 +62,16 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         transform: [{translateY: translationY.value}],
       };
     });
+    const bottomSheetStyleBackdrop = useAnimatedStyle(() => {
+      return {
+        transform: [{translateY: translationBackdrop.value}],
+      };
+    });
 
     const scrollTo = useCallback((destination: number) => {
       translationY.value = withSpring(destination, {damping: 50});
       active.value = destination !== 0;
+      translationBackdrop.value = -SCREEN_HEIGHT;
     }, []);
 
     const isActive = useCallback(() => {
@@ -77,40 +85,40 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       isActive,
     ]);
 
-    useEffect(() => {
-      translationY.value = withSpring(-SCREEN_HEIGHT / 2, {damping: 50});
-    });
-
     return (
-      <GestureDetector gesture={gesture}>
-        <Animated.View
-          style={[
-            styles.bottomSheet,
-            bottomSheetStyle,
-            {top: SCREEN_HEIGHT},
-            styles.bottomSheetShadow,
-          ]}>
-          <View style={styles.line}></View>
-          <View>{props.children}</View>
-        </Animated.View>
-      </GestureDetector>
+      <Animated.View
+        style={[
+          styles.bottomSheet,
+          {backgroundColor: 'rgba(0, 0,0,0.2)'},
+          bottomSheetStyleBackdrop,
+        ]}>
+        <GestureDetector gesture={gesture}>
+          <Animated.View
+            style={[
+              styles.bottomSheet,
+              bottomSheetStyle,
+
+              styles.bottomSheetShadow,
+            ]}>
+            <View style={styles.line}></View>
+            <View>{props.children}</View>
+          </Animated.View>
+        </GestureDetector>
+      </Animated.View>
     );
   },
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   line: {
     marginVertical: 15,
   },
 
   bottomSheet: {
-    height: SCREEN_HEIGHT / 3,
+    height: SCREEN_HEIGHT,
     width: '100%',
     position: 'absolute',
-
+    top: SCREEN_HEIGHT,
     borderRadius: 20,
     backgroundColor: 'white',
   },
@@ -124,46 +132,9 @@ const styles = StyleSheet.create({
     shadowRadius: 8.3,
     elevation: 13,
   },
-  text_header: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontsize: 30,
-  },
-  text_footer: {
-    color: '#05375a',
-    fontSize: 18,
-  },
-  action: {
-    flexDirection: 'row',
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2',
-    paddingBottom: 5,
-  },
-  signIn: {
-    width: '100%',
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  textSign: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-
-  title: {
-    color: '#05375a',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
   text: {
     color: 'grey',
     marginTop: 5,
-  },
-  button: {
-    alignItems: 'flex-end',
-    marginTop: 30,
   },
 });
 export default DragableBottomSheet;
