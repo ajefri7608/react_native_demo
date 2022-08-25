@@ -3,22 +3,19 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginPage from '~/view/page/LoginPage';
 import HomePage from '~/view/page/HomePage';
 import ProfilePage from '~/view/page/ProfilePage';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Platform} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 const Tab = createBottomTabNavigator();
 
-const IconComponent = ({name, imagePath, focused}: any) => {
+const IconComponent = ({name, icon, focused}: any) => {
   return (
     <View style={styles.iconContainer}>
-      <Image
-        source={imagePath}
-        resizeMode="contain"
-        style={{
-          tintColor: focused ? '#e32f45' : '#748c94',
-          ...styles.iconImage,
-        }}></Image>
+      <Icon name={icon} size={20} color={focused ? '#e32f45' : '#748c94'} />
+
       <Text
         style={{
           color: focused ? '#e32f45' : '#748c94',
+          paddingTop: 5,
         }}>
         {name}
       </Text>
@@ -30,7 +27,10 @@ const MyBottomTabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShown: false}}
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {height: Platform.OS === 'ios' ? '11%' : '9%'},
+      }}
       id="myBottomTab">
       <Tab.Screen
         name="Home"
@@ -39,13 +39,20 @@ const MyBottomTabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarIcon: ({focused}) => (
-            <IconComponent
-              name="Home"
-              imagePath={require('~/assets/icons/icon_home.png')}
-              focused={focused}
-            />
+            <IconComponent name="Home" icon="home" focused={focused} />
           ),
         }}
+      />
+      <Tab.Screen
+        name="Search"
+        options={{
+          tabBarShowLabel: false,
+
+          tabBarIcon: ({focused}) => (
+            <IconComponent name="Search" icon="search1" focused={focused} />
+          ),
+        }}
+        component={LoginPage}
       />
       <Tab.Screen
         name="Login"
@@ -53,11 +60,7 @@ const MyBottomTabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarIcon: ({focused}) => (
-            <IconComponent
-              name="Profile"
-              imagePath={require('~/assets/icons/icon_profile.png')}
-              focused={focused}
-            />
+            <IconComponent name="User" icon="message1" focused={focused} />
           ),
         }}
         component={LoginPage}
@@ -70,11 +73,7 @@ const MyBottomTabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarIcon: ({focused}) => (
-            <IconComponent
-              name="Profile"
-              imagePath={require('~/assets/icons/icon_profile.png')}
-              focused={focused}
-            />
+            <IconComponent name="Profile" icon="smileo" focused={focused} />
           ),
         }}
         initialParams={{openDrawer: true}}
@@ -106,8 +105,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
-    top: 10,
   },
   middleIconContainer: {
     top: -22,
@@ -116,10 +113,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
   },
-  iconImage: {
-    width: 25,
-    height: 25,
-  },
+
   text: {
     fontSize: 12,
   },
