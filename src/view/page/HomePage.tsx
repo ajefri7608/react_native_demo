@@ -24,6 +24,7 @@ import BottomSheet, {
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import DragableBottomSheet from '~/view/component/DragableBottomSheet';
+
 const HomePage = ({navigation}: any) => {
   const refBottomSheet = useRef<BottomSheetRefProps>(null);
 
@@ -38,13 +39,28 @@ const HomePage = ({navigation}: any) => {
   };
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={{flex: 1, backgroundColor: '#e5e5e5'}}>
       <View style={styles.container}>
         <TouchableOpacity style={styles.button} onPress={triggerBottomSheet}>
           <Text style={{color: 'white'}}>Show Bottom Sheet</Text>
         </TouchableOpacity>
       </View>
-      <DragableBottomSheet ref={refBottomSheet} />
+      <DragableBottomSheet ref={refBottomSheet}>
+        <View>
+          {Array.from(Array(5)).map((val, key) => {
+            return (
+              <View key={key} style={styles.item}>
+                <View>
+                  <Text>Hari Irawan</Text>
+                  <Text>087666673246</Text>
+                </View>
+
+                <View style={styles.radioButton}></View>
+              </View>
+            );
+          })}
+        </View>
+      </DragableBottomSheet>
     </GestureHandlerRootView>
   );
 };
@@ -60,6 +76,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     padding: 10,
     borderRadius: 10,
+  },
+  item: {
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  radioButton: {
+    width: 20,
+    height: 20,
+    borderRadius: 40,
+    backgroundColor: 'blue',
   },
 });
 

@@ -1,16 +1,12 @@
-
-
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginPage from '~/view/page/LoginPage';
 import HomePage from '~/view/page/HomePage';
 import ProfilePage from '~/view/page/ProfilePage';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 const Tab = createBottomTabNavigator();
 
-
-const IconComponent = ({ name, imagePath, focused }: any) => {
-
+const IconComponent = ({name, imagePath, focused}: any) => {
   return (
     <View style={styles.iconContainer}>
       <Image
@@ -18,86 +14,74 @@ const IconComponent = ({ name, imagePath, focused }: any) => {
         resizeMode="contain"
         style={{
           tintColor: focused ? '#e32f45' : '#748c94',
-          ...styles.iconImage
-        }}
-      >
-      </Image>
+          ...styles.iconImage,
+        }}></Image>
       <Text
         style={{
-          color: focused ? '#e32f45' : '#748c94'
-        }}
-      >
+          color: focused ? '#e32f45' : '#748c94',
+        }}>
         {name}
       </Text>
     </View>
-  )
-}
+  );
+};
 
 const MyBottomTabNavigator = () => {
   return (
-
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{ headerShown: true }}
+      screenOptions={{headerShown: true}}
       id="myBottomTab">
       <Tab.Screen
         name="Home"
         component={HomePage}
         options={{
           tabBarShowLabel: false,
-          tabBarStyle: { ...styles.tabBarContainer, ...styles.shadow },
-          tabBarIcon: ({ focused }) => (
+
+          tabBarIcon: ({focused}) => (
             <IconComponent
               name="Home"
-              imagePath={require("~/assets/icons/icon_home.png")}
+              imagePath={require('~/assets/icons/icon_home.png')}
               focused={focused}
             />
-          )
+          ),
         }}
       />
-      <Tab.Screen name="Login"
+      <Tab.Screen
+        name="Login"
         options={{
           tabBarShowLabel: false,
-          tabBarStyle: { ...styles.tabBarContainer, ...styles.shadow },
-          tabBarIcon: ({ focused }) => (
-            <View style={{ ...styles.iconContainer, ...styles.middleIconContainer }}>
-              <Image
-                source={require('~/assets/icons/icon_plus.png')}
-                resizeMode="contain"
-                style={{
-                  ...styles.middleIconImage,
-                  tintColor: focused ? '#e32f45' : '#e32f45',
-                }}
-              >
-              </Image>
-            </View>
-          )
+
+          tabBarIcon: ({focused}) => (
+            <IconComponent
+              name="Profile"
+              imagePath={require('~/assets/icons/icon_profile.png')}
+              focused={focused}
+            />
+          ),
         }}
-        component={LoginPage} />
+        component={LoginPage}
+      />
 
       <Tab.Screen
         name="Profile"
         component={ProfilePage}
         options={{
           tabBarShowLabel: false,
-          tabBarStyle: { ...styles.tabBarContainer, ...styles.shadow },
-          tabBarIcon: ({ focused }) => (
+
+          tabBarIcon: ({focused}) => (
             <IconComponent
               name="Profile"
-              imagePath={require("~/assets/icons/icon_profile.png")}
+              imagePath={require('~/assets/icons/icon_profile.png')}
               focused={focused}
             />
           ),
         }}
-        initialParams={{ openDrawer: true}}
+        initialParams={{openDrawer: true}}
       />
-
-
-
     </Tab.Navigator>
-
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   tabBarContainer: {
@@ -118,26 +102,26 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.5,
-    elevation: 5
+    elevation: 5,
   },
   iconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    top: 10
+    top: 10,
   },
   middleIconContainer: {
     top: -22,
   },
   middleIconImage: {
     width: 80,
-    height: 80
+    height: 80,
   },
   iconImage: {
     width: 25,
     height: 25,
   },
   text: {
-    fontSize: 12
-  }
-})
-export default MyBottomTabNavigator
+    fontSize: 12,
+  },
+});
+export default MyBottomTabNavigator;

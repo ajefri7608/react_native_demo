@@ -21,6 +21,7 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
+import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
 
@@ -28,8 +29,10 @@ export type BottomSheetRefProps = {
   scrollTo?: (destination: number) => void;
   isActive?: () => boolean;
 };
-
-const DragableBottomSheet = forwardRef<BottomSheetRefProps, {}>(
+type BottomSheetProps = {
+  children?: React.ReactNode;
+};
+const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   (props, ref) => {
     const active = useSharedValue(false);
     const context = useSharedValue({y: 0});
@@ -62,21 +65,33 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, {}>(
       translationY.value = withSpring(destination, {damping: 50});
       active.value = destination !== 0;
     }, []);
+
     const isActive = useCallback(() => {
       return active.value;
     }, []);
+
+    const tabBarHeight = useBottomTabBarHeight();
+
     useImperativeHandle(ref, () => ({scrollTo, isActive}), [
       scrollTo,
       isActive,
     ]);
+
     useEffect(() => {
       translationY.value = withSpring(-SCREEN_HEIGHT / 2, {damping: 50});
     });
 
     return (
       <GestureDetector gesture={gesture}>
-        <Animated.View style={[styles.bottomSheet, bottomSheetStyle]}>
+        <Animated.View
+          style={[
+            styles.bottomSheet,
+            bottomSheetStyle,
+            {top: SCREEN_HEIGHT},
+            styles.bottomSheetShadow,
+          ]}>
           <View style={styles.line}></View>
+          <View>{props.children}</View>
         </Animated.View>
       </GestureDetector>
     );
@@ -88,21 +103,26 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   line: {
-    height: 5,
-    width: 60,
-    backgroundColor: '#e5e5e5',
     marginVertical: 15,
-    alignSelf: 'center',
-    borderRadius: 10,
   },
 
   bottomSheet: {
-    height: SCREEN_HEIGHT / 2 + 100,
+    height: SCREEN_HEIGHT / 3,
     width: '100%',
     position: 'absolute',
-    backgroundColor: 'red',
-    top: SCREEN_HEIGHT - 100,
+
     borderRadius: 20,
+    backgroundColor: 'white',
+  },
+  bottomSheetShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.39,
+    shadowRadius: 8.3,
+    elevation: 13,
   },
   text_header: {
     color: '#fff',
