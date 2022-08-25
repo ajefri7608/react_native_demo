@@ -12,19 +12,18 @@ import React, {useRef} from 'react';
 import {
   StyleSheet,
   Text,
-  useColorScheme,
   View,
-  Button,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
-import LoginBox from '~/view/component/LoginBox';
+
 import BottomSheet, {
   BottomSheetRefProps,
 } from '~/view/component/DragableBottomSheet';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import DragableBottomSheet from '~/view/component/DragableBottomSheet';
-
+const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
 const HomePage = ({navigation}: any) => {
   const refBottomSheet = useRef<BottomSheetRefProps>(null);
 
@@ -34,7 +33,7 @@ const HomePage = ({navigation}: any) => {
     if (isActive) {
       refBottomSheet?.current?.scrollTo?.(0);
     } else {
-      refBottomSheet?.current?.scrollTo?.(-400);
+      refBottomSheet?.current?.scrollTo?.(-SCREEN_HEIGHT / 2.5);
     }
   };
 

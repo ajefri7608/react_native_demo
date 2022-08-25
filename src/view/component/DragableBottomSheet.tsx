@@ -14,7 +14,13 @@ import React, {
   useEffect,
   useImperativeHandle,
 } from 'react';
-import {Dimensions, StyleSheet, View, Text} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Text,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
@@ -23,7 +29,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 
-const {height: SCREEN_HEIGHT} = Dimensions.get('window');
+const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
 
 export type BottomSheetRefProps = {
   scrollTo?: (destination: number) => void;
@@ -44,17 +50,14 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         context.value = {y: translationY.value};
       })
       .onUpdate(event => {
-        console.log(translationY);
         translationY.value = event.translationY + context.value.y;
 
-        translationY.value = Math.max(translationY.value, -SCREEN_HEIGHT + 100);
+        translationY.value = Math.max(translationY.value, -SCREEN_HEIGHT / 2.5);
       })
       .onEnd(event => {
-        if (translationY.value > -SCREEN_HEIGHT / 3) {
-          translationY.value = withSpring(0, {damping: 50});
-          active.value = false;
-          translationBackdrop.value = 0;
-        }
+        translationY.value = withSpring(0, {damping: 50});
+        active.value = false;
+        translationBackdrop.value = withSpring(0, {damping: 50});
       });
 
     const bottomSheetStyle = useAnimatedStyle(() => {
@@ -71,14 +74,16 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const scrollTo = useCallback((destination: number) => {
       translationY.value = withSpring(destination, {damping: 50});
       active.value = destination !== 0;
-      translationBackdrop.value = -SCREEN_HEIGHT;
+      if (active.value) {
+        translationBackdrop.value = -SCREEN_HEIGHT;
+      } else {
+        translationBackdrop.value = 0;
+      }
     }, []);
 
     const isActive = useCallback(() => {
       return active.value;
     }, []);
-
-    const tabBarHeight = useBottomTabBarHeight();
 
     useImperativeHandle(ref, () => ({scrollTo, isActive}), [
       scrollTo,
@@ -89,7 +94,7 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       <Animated.View
         style={[
           styles.bottomSheet,
-          {backgroundColor: 'rgba(0, 0,0,0.2)'},
+          {backgroundColor: 'transparent'},
           bottomSheetStyleBackdrop,
         ]}>
         <GestureDetector gesture={gesture}>
