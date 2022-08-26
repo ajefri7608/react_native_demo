@@ -15,10 +15,10 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import LoginBox from '~/view/component/LoginBox';
+import LoginBox from '~/view/component/login/LoginBox';
 import MyStackNavigator from '~/navigationBar/MyStackNavigator';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-
+import Icon from 'react-native-vector-icons/FontAwesome5';
 const LoginPage = ({navigation}: any) => {
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();
@@ -27,10 +27,15 @@ const LoginPage = ({navigation}: any) => {
     <View style={{...styles.pageContainer}}>
       <Image
         source={require('~/assets/images/background/loginBackground.jpg')}
-        style={{flex: 5}}
+        style={{height: '40%'}}
         resizeMode={'contain'}
       />
-      <View style={{flex: 5, width: '100%'}}>
+      <View
+        style={{
+          height: '60%',
+          width: '100%',
+          paddingHorizontal: 20,
+        }}>
         <LoginBox />
       </View>
     </View>
@@ -45,6 +50,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+
+  iconList: {
+    flexDirection: 'row',
   },
 });
 
