@@ -1,29 +1,60 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginPage from '~/view/page/LoginPage';
 import HomePage from '~/view/page/HomePage';
 import ProfilePage from '~/view/page/ProfilePage';
-import {StyleSheet, Text, View, Platform} from 'react-native';
+import {StyleSheet, Text, View, Platform, Animated} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+
 const Tab = createBottomTabNavigator();
 
-const IconComponent = ({name, icon, focused}: any) => {
-  return (
-    <View style={styles.iconContainer}>
-      <Icon name={icon} size={20} color={focused ? '#e32f45' : '#748c94'} />
-
-      <Text
-        style={{
-          color: focused ? '#e32f45' : '#748c94',
-          paddingTop: 5,
-        }}>
-        {name}
-      </Text>
-    </View>
-  );
-};
-
 const MyBottomTabNavigator = () => {
+  const shakeAnimation = useRef(new Animated.Value(0)).current;
+  const startShake = () => {
+    Animated.sequence([
+      Animated.timing(shakeAnimation, {
+        toValue: 2,
+        duration: 65,
+        useNativeDriver: true,
+      }),
+      Animated.timing(shakeAnimation, {
+        toValue: -2,
+        duration: 65,
+        useNativeDriver: true,
+      }),
+      Animated.timing(shakeAnimation, {
+        toValue: 2,
+        duration: 65,
+        useNativeDriver: true,
+      }),
+      Animated.timing(shakeAnimation, {
+        toValue: 0,
+        duration: 65,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+  const IconComponent = ({name, icon, focused}: any) => {
+    return (
+      <View style={styles.iconContainer}>
+        <Animated.View
+          style={focused ? {transform: [{translateX: shakeAnimation}]} : {}}>
+          <Icon
+            name={icon}
+            size={focused ? 23 : 20}
+            color={focused ? '#e32f45' : '#748c94'}
+          />
+        </Animated.View>
+        <Text
+          style={{
+            color: focused ? '#e32f45' : '#748c94',
+            paddingTop: 8,
+          }}>
+          {name}
+        </Text>
+      </View>
+    );
+  };
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -38,9 +69,10 @@ const MyBottomTabNavigator = () => {
         options={{
           tabBarShowLabel: false,
 
-          tabBarIcon: ({focused}) => (
-            <IconComponent name="Home" icon="home" focused={focused} />
-          ),
+          tabBarIcon: ({focused}) => {
+            startShake();
+            return <IconComponent name="Home" icon="home" focused={focused} />;
+          },
         }}
       />
       <Tab.Screen
@@ -106,14 +138,6 @@ const styles = StyleSheet.create({
   iconContainer: {
     alignItems: 'center',
   },
-  middleIconContainer: {
-    top: -22,
-  },
-  middleIconImage: {
-    width: 80,
-    height: 80,
-  },
-
   text: {
     fontSize: 12,
   },
