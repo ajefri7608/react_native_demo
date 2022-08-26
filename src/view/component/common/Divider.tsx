@@ -5,7 +5,7 @@ export default function Divider() {
   return (
     <View style={styles.dividerContainer}>
       <View style={styles.divider}></View>
-      <Text style={{paddingHorizontal: 10}}>In Process</Text>
+      <Text style={{paddingHorizontal: 10}}>In Progress</Text>
       <View style={styles.divider}></View>
     </View>
   );

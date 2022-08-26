@@ -27,39 +27,43 @@ export function LoginBox() {
       <View style={{...styles.wellComeTextContainer}}>
         <Text style={{fontSize: 35}}>WellCome</Text>
       </View>
-
-      <View style={styles.textFieldContainer}>
-        <Text style={{fontSize: 22, marginLeft: 3, color: '#444444'}}>@</Text>
-        <TextInput
-          style={{...styles.textField}}
-          onChangeText={text => dispatch(userNameOnChange(text))}
-          value={userName}
-        />
-      </View>
-      <View style={styles.textFieldContainer}>
-        <FeatherIcon
-          name={'lock'}
-          size={20}
-          color={'#444444'}
-          style={{marginLeft: 3}}
-        />
-        <TextInput
-          style={{...styles.textField}}
-          onChangeText={text => dispatch(passwordOnChange(text))}
-          value={password}
-        />
-      </View>
-
-      <TouchableOpacity
-        onPress={() =>
-          dispatch(login({userName: userName, password: password}))
-        }>
-        <View style={{...styles.loginBtn}}>
-          <Text style={{fontSize: 20, color: 'white'}}>Login</Text>
+      <View style={styles.loginGrp}>
+        <View style={styles.textFieldContainer}>
+          <Text style={{fontSize: 22, marginLeft: 3, color: '#444444'}}>@</Text>
+          <TextInput
+            style={{...styles.textField}}
+            onChangeText={text => dispatch(userNameOnChange(text))}
+            value={userName}
+          />
         </View>
-      </TouchableOpacity>
-      <Divider />
-      <LoginIconList />
+        <View style={styles.textFieldContainer}>
+          <FeatherIcon
+            name={'lock'}
+            size={20}
+            color={'#444444'}
+            style={{marginLeft: 3}}
+          />
+          <TextInput
+            style={{...styles.textField}}
+            onChangeText={text => dispatch(passwordOnChange(text))}
+            value={password}
+          />
+        </View>
+
+        <TouchableOpacity
+          onPress={() =>
+            dispatch(login({userName: userName, password: password}))
+          }
+          style={{...styles.loginBtn}}>
+          <View style={{}}>
+            <Text style={{fontSize: 20, color: 'white'}}>Login</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <View style={{marginBottom: '5%'}}>
+        <Divider />
+        <LoginIconList />
+      </View>
 
       {isLogin ? <Text>{JSON.stringify(memberProfile)}</Text> : null}
     </View>
@@ -70,10 +74,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'center',
   },
-  wellComeTextContainer: {
-    flexDirection: 'column',
-  },
+  wellComeTextContainer: {},
+  loginGrp: {},
   textFieldContainer: {
     flexDirection: 'row',
     borderBottomWidth: 1,
@@ -86,10 +90,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    margintop: '10%',
-    marginBottom: '5%',
+
     width: '90%',
     height: 40,
+    marginVertical: 20,
     backgroundColor: '#ee9dc5',
     borderRadius: 5,
   },
