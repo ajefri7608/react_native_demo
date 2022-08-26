@@ -51,7 +51,6 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       })
       .onUpdate(event => {
         translationY.value = event.translationY + context.value.y;
-
         translationY.value = Math.max(translationY.value, -SCREEN_HEIGHT / 2.5);
       })
       .onEnd(event => {
@@ -75,8 +74,10 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       translationY.value = withSpring(destination, {damping: 50});
       active.value = destination !== 0;
       if (active.value) {
+        translationY.value = withSpring(destination, {damping: 50});
         translationBackdrop.value = -SCREEN_HEIGHT;
       } else {
+        translationY.value = withSpring(0, {damping: 50});
         translationBackdrop.value = 0;
       }
     }, []);
@@ -91,12 +92,7 @@ const DragableBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     ]);
 
     return (
-      <Animated.View
-        style={[
-          styles.bottomSheet,
-          {backgroundColor: 'transparent'},
-          bottomSheetStyleBackdrop,
-        ]}>
+      <Animated.View style={[styles.bottomSheet, bottomSheetStyleBackdrop]}>
         <GestureDetector gesture={gesture}>
           <Animated.View
             style={[
