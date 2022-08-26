@@ -9,54 +9,43 @@
  */
 
 import React from 'react';
+import {StyleSheet, useColorScheme, View, Text, Image} from 'react-native';
 import {
-  StyleSheet,
-  useColorScheme,
-  View,
-  Text
-} from 'react-native';
-import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+  SafeAreaProvider,
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import LoginBox from '~/view/component/LoginBox';
 import MyStackNavigator from '~/navigationBar/MyStackNavigator';
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 
-
-const LoginPage = ({ navigation }: any) => {
+const LoginPage = ({navigation}: any) => {
   const insets = useSafeAreaInsets();
-  //const tabBarHeight = useBottomTabBarHeight();
-  const isDarkMode = useColorScheme() === 'dark';
+  const tabBarHeight = useBottomTabBarHeight();
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
   return (
-
     <View style={{...styles.pageContainer}}>
-
-      <LoginBox />
-      
-      <Text style={{bottom: insets.bottom , ...styles.test}}>123</Text>
-      
+      <Image
+        source={require('~/assets/images/background/loginBackground.jpg')}
+        style={{flex: 5}}
+        resizeMode={'contain'}
+      />
+      <View style={{flex: 5, width: '100%'}}>
+        <LoginBox />
+      </View>
     </View>
-
-  
   );
 };
 
 const styles = StyleSheet.create({
   pageContainer: {
-    flex:1,
+    flex: 1,
+    display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
-  test: {
-    position: 'absolute',
-  
-    right:0
-
-  }
-
 });
 
 export default LoginPage;
