@@ -10,15 +10,9 @@
 
 import React from 'react';
 import {StyleSheet, useColorScheme, View, Text, Image} from 'react-native';
-import {
-  SafeAreaProvider,
-  SafeAreaView,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import LoginBox from '~/view/component/login/LoginBox';
-import MyStackNavigator from '~/navigationBar/MyStackNavigator';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 const LoginPage = ({navigation}: any) => {
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();

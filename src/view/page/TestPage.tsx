@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -19,39 +19,32 @@ import {
   View,
   Button,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import LoginBox from '~/view/component/LoginBox';
+import LoginBox from '~/view/component/login/LoginBox';
 
-const TestPage = ({ navigation }: any) => {
+const TestPage = ({navigation}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   // const backgroundStyle = {
   //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   // };
   return (
-
     <View style={styles.pageContainer}>
-
       <LoginBox />
-
     </View>
-
   );
 };
 
 const styles = StyleSheet.create({
   pageContainer: {
-    flex:1,
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#ffffff'
-  }
-
+    backgroundColor: '#ffffff',
+  },
 });
 
 export default TestPage;

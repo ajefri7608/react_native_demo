@@ -19,10 +19,10 @@ import {
 
 import BottomSheet, {
   BottomSheetRefProps,
-} from '~/view/component/DragableBottomSheet';
+} from '~/view/component/common/DragableBottomSheet';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
-import DragableBottomSheet from '~/view/component/DragableBottomSheet';
+import DragableBottomSheet from '~/view/component/common/DragableBottomSheet';
 const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
 const HomePage = ({navigation}: any) => {
   const refBottomSheet = useRef<BottomSheetRefProps>(null);

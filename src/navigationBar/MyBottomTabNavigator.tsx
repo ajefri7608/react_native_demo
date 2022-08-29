@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginPage from '~/view/page/LoginPage';
+import SearchPage from '~/view/page/SearchPage';
 import HomePage from '~/view/page/HomePage';
 import ProfilePage from '~/view/page/ProfilePage';
 import {StyleSheet, Text, View, Platform, Animated} from 'react-native';
@@ -84,7 +85,7 @@ const MyBottomTabNavigator = () => {
             <IconComponent name="Search" icon="search1" focused={focused} />
           ),
         }}
-        component={LoginPage}
+        component={SearchPage}
       />
       <Tab.Screen
         name="Login"
