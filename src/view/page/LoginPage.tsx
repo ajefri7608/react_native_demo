@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, useColorScheme, View, Text, Image} from 'react-native';
 import {
   SafeAreaProvider,
@@ -18,24 +18,40 @@ import {
 import LoginBox from '~/view/component/login/LoginBox';
 import MyStackNavigator from '~/navigationBar/MyStackNavigator';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-const LoginPage = ({navigation}: any) => {
+
+import {useNavigation} from '@react-navigation/native';
+import {useAppSelector} from '~/redux/hook';
+import {CommonActions} from '@react-navigation/native';
+type PublicationT = {
+  author: string;
+  publisher: string;
+};
+
+const LoginPage = () => {
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();
-
+  const navigation = useNavigation();
+  const isLogin = useAppSelector(state => state.user.isLogin);
+  useEffect(() => {
+    if (isLogin) {
+      navigation.dispatch(
+        CommonActions.navigate({
+          name: 'Search',
+          params: {},
+        }),
+      );
+    }
+  }, [isLogin]);
   return (
     <View style={{...styles.pageContainer}}>
-      <Image
-        source={require('~/assets/images/background/loginBackground.jpg')}
-        style={{height: '40%'}}
-        resizeMode={'contain'}
-      />
-      <View
-        style={{
-          height: '60%',
-          width: '100%',
-          paddingHorizontal: 20,
-        }}>
+      <View style={{flex: 4, backgroundColor: 'blue'}}>
+        <Image
+          source={require('~/assets/images/background/loginBackground.jpg')}
+          style={{height: '100%', width: '100%'}}
+          resizeMode={'cover'}
+        />
+      </View>
+      <View style={styles.loginBoxContainer}>
         <LoginBox />
       </View>
     </View>
@@ -48,8 +64,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
+
     backgroundColor: 'white',
+  },
+  loginBoxContainer: {
+    flex: 6,
+    width: '100%',
+    paddingHorizontal: 20,
   },
 
   iconList: {

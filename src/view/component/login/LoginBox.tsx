@@ -1,23 +1,16 @@
-import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {userNameOnChange, passwordOnChange} from '~/redux/slice/userSlice';
+import React, {useState} from 'react';
+
 import {useAppSelector, useAppDispatch} from '~/redux/hook';
-import {
-  View,
-  Button,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native';
 
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {login} from '~/redux/slice/userSlice';
 import LoginIconList from './LoginIconList';
 import Divider from '../common/Divider';
+
 export function LoginBox() {
-  const userName = useAppSelector(state => state.user.userName);
-  const password = useAppSelector(state => state.user.password);
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
   const memberProfile = useAppSelector(state => state.user.memberProfile);
   const isLogin = useAppSelector(state => state.user.isLogin);
   const dispatch = useAppDispatch();
@@ -25,42 +18,41 @@ export function LoginBox() {
   return (
     <View style={{...styles.container}}>
       <View style={{...styles.wellComeTextContainer}}>
-        <Text style={{fontSize: 35}}>WellCome</Text>
+        <Text style={{fontSize: 31}}>WellCome</Text>
       </View>
       <View style={styles.loginGrp}>
         <View style={styles.textFieldContainer}>
-          <Text style={{fontSize: 22, marginLeft: 3, color: '#444444'}}>@</Text>
+          <Text style={{fontSize: 22, marginLeft: 4, color: '#444444'}}>@</Text>
           <TextInput
             style={{...styles.textField}}
-            onChangeText={text => dispatch(userNameOnChange(text))}
+            onChangeText={text => setUserName(text)}
             value={userName}
           />
         </View>
-        <View style={styles.textFieldContainer}>
+        <View style={{marginTop: 12, ...styles.textFieldContainer}}>
           <FeatherIcon
             name={'lock'}
             size={20}
             color={'#444444'}
-            style={{marginLeft: 3}}
+            style={{marginLeft: 4}}
           />
           <TextInput
             style={{...styles.textField}}
-            onChangeText={text => dispatch(passwordOnChange(text))}
+            onChangeText={text => setPassword(text)}
+            secureTextEntry={true}
             value={password}
           />
         </View>
 
-        <TouchableOpacity
+        <Pressable
           onPress={() =>
             dispatch(login({userName: userName, password: password}))
           }
           style={{...styles.loginBtn}}>
-          <View style={{}}>
-            <Text style={{fontSize: 20, color: 'white'}}>Login</Text>
-          </View>
-        </TouchableOpacity>
+          <Text style={{fontSize: 20, color: 'white'}}>Login</Text>
+        </Pressable>
       </View>
-      <View style={{marginBottom: '5%'}}>
+      <View style={{...styles.iconListContainer}}>
         <Divider />
         <LoginIconList />
       </View>
@@ -74,16 +66,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
   },
-  wellComeTextContainer: {},
-  loginGrp: {},
+  wellComeTextContainer: {flex: 3},
+  loginGrp: {flex: 12},
   textFieldContainer: {
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderBottomColor: '#e5e5e5',
-    paddingBottom: 4,
-    marginVertical: 12,
+    alignItems: 'baseline',
+    paddingBottom: 5,
   },
   loginBtn: {
     flexDirection: 'row',
@@ -93,14 +84,21 @@ const styles = StyleSheet.create({
 
     width: '90%',
     height: 40,
-    marginVertical: 20,
+    marginTop: 'auto',
+    marginBottom: '10%',
     backgroundColor: '#ee9dc5',
     borderRadius: 5,
+  },
+  iconListContainer: {
+    marginBottom: '5%',
+    flex: 5,
   },
 
   textField: {
     width: '100%',
-    paddingLeft: 10,
+    paddingVertical: 0,
+    includeFontPadding: false,
+    textAlignVertical: 'bottom',
   },
 });
 export default LoginBox;
