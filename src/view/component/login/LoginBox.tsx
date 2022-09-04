@@ -7,8 +7,11 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import {login} from '~/redux/slice/userSlice';
 import LoginIconList from './LoginIconList';
 import Divider from '../common/Divider';
+type Prop = {
+  submitBtnClick: () => void;
+};
 
-export function LoginBox() {
+export function LoginBox({submitBtnClick}: Prop) {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const memberProfile = useAppSelector(state => state.user.memberProfile);
@@ -45,9 +48,10 @@ export function LoginBox() {
         </View>
 
         <Pressable
-          onPress={() =>
-            dispatch(login({userName: userName, password: password}))
-          }
+          onPress={() => {
+            submitBtnClick();
+            dispatch(login({userName: userName, password: password}));
+          }}
           style={{...styles.loginBtn}}>
           <Text style={{fontSize: 20, color: 'white'}}>Login</Text>
         </Pressable>

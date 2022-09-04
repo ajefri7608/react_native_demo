@@ -1,6 +1,6 @@
 import React from 'react';
 import {BlurView, VibrancyView} from '@react-native-community/blur';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 
 const Loading = () => {
   return (
@@ -11,6 +11,13 @@ const Loading = () => {
         blurAmount={10}
         reducedTransparencyFallbackColor="white"
       />
+      <Image
+        style={{
+          width: 150,
+          height: 150,
+        }}
+        source={require('~/assets/icons/loadingGif.gif')}
+      />
     </View>
   );
 };
@@ -19,7 +26,9 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     position: 'absolute',
-
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     // top: SCREEN_HEIGHT,
     // borderRadius: 20,
     // backgroundColor: 'white',

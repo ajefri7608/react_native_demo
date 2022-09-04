@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback, useState} from 'react';
 import {
   StyleSheet,
   useColorScheme,
@@ -40,6 +40,12 @@ const LoginPage = () => {
   const tabBarHeight = useBottomTabBarHeight();
   const navigation = useNavigation();
   const isLogin = useAppSelector(state => state.user.isLogin);
+  const [onLoading, setOnLoading] = useState(false);
+  const submitBtnClick = () => {
+    console.log('asdasd');
+    setOnLoading(true);
+  };
+
   useEffect(() => {
     if (isLogin) {
       navigation.dispatch(
@@ -60,11 +66,9 @@ const LoginPage = () => {
         />
       </View>
       <View style={styles.loginBoxContainer}>
-        <LoginBox />
+        <LoginBox submitBtnClick={submitBtnClick} />
       </View>
-      <View style={{...styles.blurViewContainer}}>
-        <Loading />
-      </View>
+      {onLoading ? <Loading /> : <></>}
     </View>
   );
 };
