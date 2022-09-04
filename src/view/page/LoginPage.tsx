@@ -9,7 +9,14 @@
  */
 
 import React, {useEffect} from 'react';
-import {StyleSheet, useColorScheme, View, Text, Image} from 'react-native';
+import {
+  StyleSheet,
+  useColorScheme,
+  View,
+  Text,
+  Image,
+  ImageBackground,
+} from 'react-native';
 import {
   SafeAreaProvider,
   SafeAreaView,
@@ -22,6 +29,7 @@ import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import {useNavigation} from '@react-navigation/native';
 import {useAppSelector} from '~/redux/hook';
 import {CommonActions} from '@react-navigation/native';
+import Loading from '../component/common/Loading';
 type PublicationT = {
   author: string;
   publisher: string;
@@ -44,7 +52,7 @@ const LoginPage = () => {
   }, [isLogin]);
   return (
     <View style={{...styles.pageContainer}}>
-      <View style={{flex: 4, backgroundColor: 'blue'}}>
+      <View style={{flex: 4}}>
         <Image
           source={require('~/assets/images/background/loginBackground.jpg')}
           style={{height: '100%', width: '100%'}}
@@ -54,11 +62,21 @@ const LoginPage = () => {
       <View style={styles.loginBoxContainer}>
         <LoginBox />
       </View>
+      <View style={{...styles.blurViewContainer}}>
+        <Loading />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  blurViewContainer: {
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    // top: SCREEN_HEIGHT,
+    // borderRadius: 20,
+  },
   pageContainer: {
     flex: 1,
     display: 'flex',
