@@ -92,7 +92,7 @@ const MyBottomTabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarIcon: ({focused}) => (
-            <IconComponent name="User" icon="message1" focused={focused} />
+            <IconComponent name="User" icon="user" focused={focused} />
           ),
         }}
         component={LoginPage}

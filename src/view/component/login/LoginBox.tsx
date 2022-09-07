@@ -7,6 +7,8 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import {login} from '~/redux/slice/userSlice';
 import LoginIconList from './LoginIconList';
 import Divider from '../common/Divider';
+import {Body01, Header01} from '~/themes/Typography';
+import {Colors} from '~/themes/Colors';
 type Prop = {
   submitBtnClick: () => void;
 };
@@ -14,6 +16,8 @@ type Prop = {
 export function LoginBox({submitBtnClick}: Prop) {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [userNameFieldOnforus, setUserNameFieldOnforus] = useState(false);
+  const [passwordFieldOnforus, setPasswordFieldOnforus] = useState(false);
   const memberProfile = useAppSelector(state => state.user.memberProfile);
   const isLogin = useAppSelector(state => state.user.isLogin);
   const dispatch = useAppDispatch();
@@ -21,14 +25,21 @@ export function LoginBox({submitBtnClick}: Prop) {
   return (
     <View style={{...styles.container}}>
       <View style={{...styles.wellComeTextContainer}}>
-        <Text style={{fontSize: 31}}>WellCome</Text>
+        <Text style={{fontSize: 31, ...Header01}}>WellCome</Text>
       </View>
       <View style={styles.loginGrp}>
-        <View style={styles.textFieldContainer}>
+        <View
+          style={{
+            ...styles.textFieldContainer,
+            borderBottomColor: userNameFieldOnforus
+              ? Colors.HoverRed
+              : Colors.BodyFont,
+          }}>
           <Text style={{fontSize: 22, marginLeft: 4, color: '#444444'}}>@</Text>
           <TextInput
             style={{...styles.textField}}
             onChangeText={text => setUserName(text)}
+            onFocus={() => setUserNameFieldOnforus(true)}
             value={userName}
           />
         </View>
@@ -76,7 +87,6 @@ const styles = StyleSheet.create({
   textFieldContainer: {
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e5e5',
     alignItems: 'baseline',
     paddingBottom: 5,
   },
@@ -91,7 +101,7 @@ const styles = StyleSheet.create({
     marginTop: 'auto',
     marginBottom: '10%',
     backgroundColor: '#ee9dc5',
-    borderRadius: 5,
+    borderRadius: 33,
   },
   iconListContainer: {
     marginBottom: '5%',
@@ -103,6 +113,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     includeFontPadding: false,
     textAlignVertical: 'bottom',
+    ...Body01,
   },
 });
 export default LoginBox;
