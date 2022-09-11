@@ -23,6 +23,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import LoginBox from '~/view/component/login/LoginBox';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import ProductGridItem from '../component/product/ProductGridItem';
+import {SearchBar} from '~/view/component/search/SearchBar';
 
 const DATA = [
   {
@@ -53,17 +54,23 @@ const SearchPage = ({navigation}: any) => {
   const tabBarHeight = useBottomTabBarHeight();
   const renderItem = ({item}: any) => <ProductGridItem title={item.title} />;
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList numColumns={2} data={DATA} renderItem={renderItem} />
-    </SafeAreaView>
+    <View style={[styles.container, {marginTop: insets.top}]}>
+      <SearchBar />
+      <FlatList
+        style={{marginHorizontal: 10}}
+        numColumns={1}
+        data={DATA}
+        renderItem={renderItem}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
-    marginHorizontal: 20,
+    backgroundColor: 'white',
+    flexDirection: 'column',
   },
 });
 

@@ -7,8 +7,8 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import {login} from '~/redux/slice/userSlice';
 import LoginIconList from './LoginIconList';
 import Divider from '../common/Divider';
-import {Body01, Header01} from '~/themes/Typography';
-import {Colors} from '~/themes/Colors';
+import {Body01, Header01} from '~/themes/typography';
+import {Colors} from '~/themes/colors';
 type Prop = {
   submitBtnClick: () => void;
 };
