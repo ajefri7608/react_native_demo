@@ -57,7 +57,7 @@ const SearchPage = ({navigation}: any) => {
     <View style={[styles.container, {marginTop: insets.top}]}>
       <SearchBar />
       <FlatList
-        style={{marginHorizontal: 10}}
+        style={{marginHorizontal: 20}}
         numColumns={1}
         data={DATA}
         renderItem={renderItem}
@@ -69,6 +69,7 @@ const SearchPage = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
     backgroundColor: 'white',
     flexDirection: 'column',
   },
