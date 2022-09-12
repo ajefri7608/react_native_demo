@@ -10,6 +10,11 @@ export const Header02 = {
   fontSize: 18,
 } as TextStyle;
 
+export const Body01SemiBold = {
+  fontFamily: 'RobotoSlab-SemiBold',
+  fontSize: 16,
+} as TextStyle;
+
 export const Body01 = {
   fontFamily: 'RobotoSlab-SemiBold',
   fontSize: 16,

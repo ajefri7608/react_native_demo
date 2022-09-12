@@ -47,6 +47,20 @@ const DATA = [
     price: 100,
     productImage: '',
   },
+  {
+    brand: 'John Jacobs',
+    type: 'EyeGlasses',
+    name: 'Jobn Jacobs Blue Reactangle Eyeglasses',
+    price: 100,
+    productImage: '',
+  },
+  {
+    brand: 'John Jacobs',
+    type: 'EyeGlasses',
+    name: 'Jobn Jacobs Blue Reactangle Eyeglasses',
+    price: 100,
+    productImage: '',
+  },
 ];
 
 const SearchPage = ({navigation}: any) => {
@@ -57,9 +71,10 @@ const SearchPage = ({navigation}: any) => {
     <View style={[styles.container, {marginTop: insets.top}]}>
       <SearchBar />
       <FlatList
-        style={{marginHorizontal: 20}}
+        style={{}}
         numColumns={1}
         data={DATA}
+        showsVerticalScrollIndicator={false}
         renderItem={renderItem}
       />
     </View>
