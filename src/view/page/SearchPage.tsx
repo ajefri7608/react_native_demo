@@ -68,10 +68,9 @@ const SearchPage = ({navigation}: any) => {
   const tabBarHeight = useBottomTabBarHeight();
   const renderItem = ({item}: any) => <ProductGridItem title={item.title} />;
   return (
-    <View style={[styles.container, {marginTop: insets.top}]}>
+    <View style={[styles.container, {paddingTop: insets.top}]}>
       <SearchBar />
       <FlatList
-        style={{}}
         numColumns={1}
         data={DATA}
         showsVerticalScrollIndicator={false}
