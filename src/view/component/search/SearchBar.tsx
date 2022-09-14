@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {Colors} from '~/themes/colors';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {Body02, Header01} from '~/themes/typography';
 export const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
@@ -17,7 +17,7 @@ export const SearchBar = () => {
     <View style={styles.container}>
       <View style={styles.searchBarGrp}>
         <View style={styles.searchIcon}>
-          <FeatherIcon name={'search'} size={23} color={'#77e6fd'} />
+          <FeatherIcon name={'search'} size={23} color={Colors.Grey_04} />
         </View>
         <TextInput
           style={styles.textInput}
@@ -26,7 +26,7 @@ export const SearchBar = () => {
         />
       </View>
       <Pressable style={styles.filter}>
-        <FontAwesomeIcon name={'sliders-h'} size={23} color={'#77e6fd'} />
+        <FontAwesomeIcon name={'sliders'} size={23} color={Colors.Grey_04} />
       </Pressable>
     </View>
   );
