@@ -15,46 +15,65 @@ export const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
   return (
     <View style={styles.container}>
-      <View style={styles.searchBarGrp}>
-        <View style={styles.searchIcon}>
-          <FeatherIcon name={'search'} size={23} color={Colors.Grey_04} />
+      <View style={styles.searchBarShadow}>
+        <View style={styles.searchBar}>
+          <View style={styles.searchTextGrp}>
+            <View style={styles.searchIcon}>
+              <FeatherIcon name={'search'} size={23} color={'black'} />
+            </View>
+            <TextInput
+              style={styles.textInput}
+              onChangeText={setSearchText}
+              value={searchText}
+            />
+          </View>
+          <Pressable style={styles.filter}>
+            <FontAwesomeIcon name={'sliders-h'} size={23} color={'black'} />
+          </Pressable>
         </View>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={setSearchText}
-          value={searchText}
-        />
       </View>
-      <Pressable style={styles.filter}>
-        <FontAwesomeIcon name={'sliders'} size={23} color={Colors.Grey_04} />
-      </Pressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    marginVertical: 10,
+    marginHorizontal: 15,
+  },
+  searchBar: {
     flexDirection: 'row',
-
-    height: 55,
-    width: '100%',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    height: 50,
     justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 99,
+    overflow: 'hidden',
+  },
+  searchBarShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+    borderRadius: 99,
   },
 
-  searchBarGrp: {
+  searchTextGrp: {
     flex: 9,
-    backgroundColor: Colors.Grey_01,
+
     flexDirection: 'row',
     alignItems: 'baseline',
-    borderRadius: 5,
+    marginTop: 3,
   },
   searchIcon: {
     position: 'relative',
     left: 0,
-    paddingStart: 10,
+    paddingStart: 20,
     paddingEnd: 5,
     alignSelf: 'center',
     marginTop: 5,
@@ -66,9 +85,7 @@ const styles = StyleSheet.create({
   },
 
   filter: {
-    flex: 1,
-    paddingHorizontal: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginEnd: 20,
+    marginTop: 3,
   },
 });
