@@ -76,16 +76,15 @@ const styles = StyleSheet.create({
     paddingStart: 20,
     paddingEnd: 5,
     alignSelf: 'center',
-    marginTop: 5,
   },
   textInput: {
     width: '100%',
     paddingVertical: 0,
     ...Body02,
+    marginVertical: 0,
   },
 
   filter: {
     marginEnd: 20,
-    marginTop: 3,
   },
 });
