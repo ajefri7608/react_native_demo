@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -23,10 +23,11 @@ import BottomSheet, {
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import DragableBottomSheet from '~/view/component/common/DragableBottomSheet';
+import BottomDialog from '../component/common/BottomDialog';
 const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
 const HomePage = ({navigation}: any) => {
   const refBottomSheet = useRef<BottomSheetRefProps>(null);
-
+  const [openCardDialog, setOpenCardDialog] = useState(false);
   const triggerBottomSheet = () => {
     const isActive = refBottomSheet?.current?.isActive?.();
 
@@ -42,6 +43,11 @@ const HomePage = ({navigation}: any) => {
       <View style={styles.container}>
         <TouchableOpacity style={styles.button} onPress={triggerBottomSheet}>
           <Text style={{color: 'white'}}>Show Bottom Sheet</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setOpenCardDialog(true)}>
+          <Text style={{color: 'white'}}>Show Bottom Dialog</Text>
         </TouchableOpacity>
       </View>
       <DragableBottomSheet ref={refBottomSheet}>
@@ -60,6 +66,17 @@ const HomePage = ({navigation}: any) => {
           })}
         </View>
       </DragableBottomSheet>
+      {openCardDialog ? (
+        <BottomDialog
+          closeBtnCallBack={() => {
+            setTimeout(() => {
+              setOpenCardDialog(false);
+            }, 350);
+          }}
+        />
+      ) : (
+        <></>
+      )}
     </GestureHandlerRootView>
   );
 };
