@@ -41,15 +41,13 @@ const HomePage = ({navigation}: any) => {
   return (
     <GestureHandlerRootView style={{flex: 1, backgroundColor: '#e5e5e5'}}>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={triggerBottomSheet}>
-          <Text style={{color: 'white'}}>Show Bottom Sheet</Text>
-        </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
           onPress={() => setOpenCardDialog(true)}>
           <Text style={{color: 'white'}}>Show Bottom Dialog</Text>
         </TouchableOpacity>
         <LottieView
+          style={{marginTop: 'auto'}}
           source={require('~/assets/gif/lottie/hello.json')}
           autoPlay
           loop
