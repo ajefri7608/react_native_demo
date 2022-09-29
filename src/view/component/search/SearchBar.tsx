@@ -7,19 +7,19 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import {Colors} from '~/themes/colors';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import {Body02, Header01} from '~/themes/typography';
+import {Body02} from '~/themes/typography';
 export const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={() => {}}>
       <View style={styles.searchBarShadow}>
         <View style={styles.searchBar}>
           <View style={styles.searchTextGrp}>
             <View style={styles.searchIcon}>
-              <FeatherIcon name={'search'} size={23} color={'black'} />
+              <Image
+                style={{tintColor: 'black', width: 18, height: 18}}
+                source={require('~/assets/images/search.png')}
+              />
             </View>
             <TextInput
               style={styles.textInput}
@@ -27,12 +27,15 @@ export const SearchBar = () => {
               value={searchText}
             />
           </View>
-          <Pressable style={styles.filter}>
-            <FontAwesomeIcon name={'sliders-h'} size={23} color={'black'} />
-          </Pressable>
+          <View style={styles.filter}>
+            <Image
+              style={{tintColor: 'black', width: 19, height: 19}}
+              source={require('~/assets/images/filter.png')}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
@@ -68,7 +71,6 @@ const styles = StyleSheet.create({
 
     flexDirection: 'row',
     alignItems: 'baseline',
-    marginTop: 3,
   },
   searchIcon: {
     position: 'relative',
