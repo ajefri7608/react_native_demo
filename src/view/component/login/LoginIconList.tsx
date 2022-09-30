@@ -1,26 +1,25 @@
 import React from 'react';
 import {StyleSheet, View, Image} from 'react-native';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 export default function LoginIconList() {
   return (
     <View style={styles.iconList}>
       <View style={styles.iconContainer}>
         <Image
-          source={require('~/assets/icons/google.png')}
+          source={require('~/assets/images/vectorIcon/google.png')}
           style={{width: 30, height: 30}}
           resizeMode={'contain'}
         />
       </View>
       <View style={styles.iconContainer}>
         <Image
-          source={require('~/assets/icons/facebook.png')}
+          source={require('~/assets/images/vectorIcon/facebook.png')}
           style={{width: 30, height: 30}}
           resizeMode={'contain'}
         />
       </View>
       <View style={styles.iconContainer}>
         <Image
-          source={require('~/assets/icons/twitter.png')}
+          source={require('~/assets/images/vectorIcon/twitter.png')}
           style={{width: 30, height: 30}}
           resizeMode={'contain'}
         />

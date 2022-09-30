@@ -41,3 +41,15 @@ export const Body02 = {
   fontSize: 14,
   letterSpacing: 0,
 } as TextStyle;
+
+export const Body03 = {
+  fontFamily: 'RobotoSlab-Regular',
+  fontSize: 12,
+  letterSpacing: 0,
+} as TextStyle;
+
+export const Body04 = {
+  fontFamily: 'RobotoSlab-Regular',
+  fontSize: 9,
+  letterSpacing: 0,
+} as TextStyle;

@@ -150,8 +150,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tarBarStyles: {
-    borderTopLeftRadius: 18,
-    borderTopRightRadius: 18,
+    borderTopLeftRadius: 33,
+    borderTopRightRadius: 33,
     backgroundColor: 'white',
     position: 'absolute',
     width: '100%',

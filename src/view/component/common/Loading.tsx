@@ -1,7 +1,7 @@
 import React from 'react';
 import {BlurView, VibrancyView} from '@react-native-community/blur';
 import {StyleSheet, View, Image} from 'react-native';
-
+import LottieView from 'lottie-react-native';
 const Loading = () => {
   return (
     <View style={styles.blurViewContainer}>
@@ -11,12 +11,11 @@ const Loading = () => {
         blurAmount={10}
         reducedTransparencyFallbackColor="white"
       />
-      <Image
-        style={{
-          width: 150,
-          height: 150,
-        }}
-        source={require('~/assets/icons/loadingGif.gif')}
+      <LottieView
+        style={styles.Icon}
+        source={require('~/assets/gif/lottie/loading1.json')}
+        autoPlay
+        loop
       />
     </View>
   );
@@ -29,9 +28,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // top: SCREEN_HEIGHT,
-    // borderRadius: 20,
-    // backgroundColor: 'white',
+  },
+  Icon: {
+    width: '100%',
+    height: 350,
   },
 });
 export default Loading;

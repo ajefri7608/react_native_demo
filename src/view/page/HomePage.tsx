@@ -21,7 +21,7 @@ import BottomSheet, {
   BottomSheetRefProps,
 } from '~/view/component/common/DragableBottomSheet';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import LottieView from 'lottie-react-native';
+
 import DragableBottomSheet from '~/view/component/common/DragableBottomSheet';
 import BottomDialog from '../component/common/BottomDialog';
 const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
@@ -46,12 +46,6 @@ const HomePage = ({navigation}: any) => {
           onPress={() => setOpenCardDialog(true)}>
           <Text style={{color: 'white'}}>Show Bottom Dialog</Text>
         </TouchableOpacity>
-        <LottieView
-          style={{marginTop: 'auto'}}
-          source={require('~/assets/gif/lottie/hello.json')}
-          autoPlay
-          loop
-        />
       </View>
       <DragableBottomSheet ref={refBottomSheet}>
         <View>

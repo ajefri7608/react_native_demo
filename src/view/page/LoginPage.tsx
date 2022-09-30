@@ -8,32 +8,17 @@
  * @format
  */
 
-import React, {useEffect, useCallback, useState} from 'react';
-import {
-  StyleSheet,
-  useColorScheme,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-} from 'react-native';
-import {
-  SafeAreaProvider,
-  SafeAreaView,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import LoginBox from '~/view/component/login/LoginBox';
-import MyStackNavigator from '~/navigationBar/MyStackNavigator';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View, Text, TextInput, Pressable} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-
+import LottieView from 'lottie-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useAppSelector} from '~/redux/hook';
 import {CommonActions} from '@react-navigation/native';
 import Loading from '../component/common/Loading';
-type PublicationT = {
-  author: string;
-  publisher: string;
-};
+import LoginIconList from '../component/login/LoginIconList';
+import {Body03} from '~/themes/typography';
 
 const LoginPage = () => {
   const insets = useSafeAreaInsets();
@@ -57,16 +42,34 @@ const LoginPage = () => {
     }
   }, [isLogin]);
   return (
-    <View style={{...styles.pageContainer}}>
-      <View style={{flex: 4}}>
-        <Image
-          source={require('~/assets/images/background/loginBackground.jpg')}
-          style={{height: '100%', width: '100%'}}
-          resizeMode={'cover'}
+    <View style={{flex: 1}}>
+      <View style={styles.container}>
+        <LottieView
+          style={styles.logo}
+          source={require('~/assets/gif/lottie/hello.json')}
+          autoPlay
+          loop
         />
-      </View>
-      <View style={styles.loginBoxContainer}>
-        <LoginBox submitBtnClick={submitBtnClick} />
+        <View style={styles.loginBoxContainer}>
+          <Text style={[Body03, styles.inputTitle]}>User name:</Text>
+          <TextInput style={styles.textInput} />
+          <Text style={[Body03, styles.inputTitle]}>Password:</Text>
+          <TextInput style={styles.textInput} />
+          <View style={styles.loginBadgeShadow}>
+            <Pressable
+              style={styles.loginBadgeContainer}
+              onPress={() => submitBtnClick()}>
+              <LottieView
+                style={styles.loginBadge}
+                source={require('~/assets/gif/lottie/loginBtn2.json')}
+                autoPlay
+                loop
+              />
+              <Text style={Body03}>login</Text>
+            </Pressable>
+          </View>
+          <LoginIconList></LoginIconList>
+        </View>
       </View>
       {onLoading ? <Loading /> : <></>}
     </View>
@@ -74,29 +77,67 @@ const LoginPage = () => {
 };
 
 const styles = StyleSheet.create({
-  blurViewContainer: {
-    height: '100%',
-    width: '100%',
-    position: 'absolute',
-    // top: SCREEN_HEIGHT,
-    // borderRadius: 20,
-  },
-  pageContainer: {
+  container: {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-
+    paddingHorizontal: 30,
     backgroundColor: 'white',
   },
-  loginBoxContainer: {
-    flex: 6,
-    width: '100%',
-    paddingHorizontal: 20,
+  logo: {
+    height: 250,
+    alignSelf: 'center',
+    paddingTop: 20,
+    backgroundColor: 'white',
   },
-
+  inputTitle: {
+    paddingTop: 10,
+    paddingBottom: 0,
+    marginBottom: 0,
+    color: '#fad126',
+  },
+  textInput: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#321abc',
+    paddingVertical: 0,
+  },
+  loginBoxContainer: {
+    flexDirection: 'column',
+    width: '100%',
+    height: 300,
+    backgroundColor: 'white',
+  },
+  loginBadgeShadow: {
+    width: 70,
+    borderRadius: 16,
+    backgroundColor: 'transparent',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 30,
+    flexDirection: 'column',
+  },
+  loginBadgeContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    overflow: 'hidden',
+    padding: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   iconList: {
     flexDirection: 'row',
+  },
+  loginBadge: {
+    width: 50,
+    height: 50,
   },
 });
 
