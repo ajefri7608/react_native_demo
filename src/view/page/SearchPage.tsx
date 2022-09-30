@@ -33,13 +33,13 @@ const DATA = [
     price: 100,
     productImage: '',
   },
-  // {
-  //   brand: 'John Jacobs',
-  //   type: 'EyeGlasses',
-  //   name: 'Jobn Jacobs Blue Reactangle Eyeglasses',
-  //   price: 100,
-  //   productImage: '',
-  // },
+  {
+    brand: 'John Jacobs',
+    type: 'EyeGlasses',
+    name: 'Jobn Jacobs Blue Reactangle Eyeglasses',
+    price: 100,
+    productImage: '',
+  },
   // {
   //   brand: 'John Jacobs',
   //   type: 'EyeGlasses',

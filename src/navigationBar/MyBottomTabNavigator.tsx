@@ -1,11 +1,12 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef} from 'react';
+import {ImageSourcePropType} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginPage from '~/view/page/LoginPage';
 import HomePage from '~/view/page/HomePage';
 import SearchPage from '~/view/page/SearchPage';
 import ProfilePage from '~/view/page/ProfilePage';
-import {StyleSheet, Text, View, Platform, Animated} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import {StyleSheet, Text, View, Platform, Animated, Image} from 'react-native';
+import {Colors} from '~/themes/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -35,22 +36,33 @@ const MyBottomTabNavigator = () => {
       }),
     ]).start();
   };
-  const IconComponent = ({name, icon, focused}: any) => {
+  type iconProps = {
+    name: string;
+    focused: boolean;
+    icon: ImageSourcePropType;
+  };
+  const IconComponent = ({name, focused, icon}: iconProps) => {
     return (
       <View style={styles.iconContainer}>
         <Animated.View
           style={focused ? {transform: [{translateX: shakeAnimation}]} : {}}>
-          <Icon
-            name={icon}
-            size={focused ? 23 : 20}
-            color={focused ? '#e32f45' : '#748c94'}
+          <Image
+            source={icon}
+            style={{
+              width: focused ? 21 : 19,
+              height: focused ? 21 : 19,
+              tintColor: Colors.Grey_05,
+            }}
           />
         </Animated.View>
         <Text
-          style={{
-            color: focused ? '#e32f45' : '#748c94',
-            paddingTop: 8,
-          }}>
+          style={[
+            {
+              color: focused ? '#e32f45' : '#748c94',
+              paddingTop: 8,
+              fontSize: 13,
+            },
+          ]}>
           {name}
         </Text>
       </View>
@@ -61,7 +73,7 @@ const MyBottomTabNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {height: Platform.OS === 'ios' ? '11%' : '9%'},
+        tabBarStyle: styles.tarBarStyles,
       }}
       id="myBottomTab">
       <Tab.Screen
@@ -69,10 +81,16 @@ const MyBottomTabNavigator = () => {
         component={HomePage}
         options={{
           tabBarShowLabel: false,
-
+          tabBarLabelStyle: {backgroundColor: 'white'},
           tabBarIcon: ({focused}) => {
             startShake();
-            return <IconComponent name="Home" icon="home" focused={focused} />;
+            return (
+              <IconComponent
+                name="Home"
+                icon={require('~/assets/images/vectorIcon/home.png')}
+                focused={focused}
+              />
+            );
           },
         }}
       />
@@ -82,7 +100,11 @@ const MyBottomTabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarIcon: ({focused}) => (
-            <IconComponent name="Search" icon="search1" focused={focused} />
+            <IconComponent
+              name="Search"
+              icon={require('~/assets/images/vectorIcon/search.png')}
+              focused={focused}
+            />
           ),
         }}
         component={SearchPage}
@@ -93,7 +115,11 @@ const MyBottomTabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarIcon: ({focused}) => (
-            <IconComponent name="User" icon="user" focused={focused} />
+            <IconComponent
+              name="User"
+              icon={require('~/assets/images/vectorIcon/user.png')}
+              focused={focused}
+            />
           ),
         }}
         component={LoginPage}
@@ -106,7 +132,11 @@ const MyBottomTabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarIcon: ({focused}) => (
-            <IconComponent name="Profile" icon="smileo" focused={focused} />
+            <IconComponent
+              name="Repair"
+              icon={require('~/assets/images/vectorIcon/repair.png')}
+              focused={focused}
+            />
           ),
         }}
         initialParams={{openDrawer: true}}
@@ -119,8 +149,13 @@ const styles = StyleSheet.create({
   iconContainer: {
     alignItems: 'center',
   },
-  text: {
-    fontSize: 12,
+  tarBarStyles: {
+    borderTopLeftRadius: 18,
+    borderTopRightRadius: 18,
+    backgroundColor: 'white',
+    position: 'absolute',
+    width: '100%',
+    height: 60,
   },
 });
 export default MyBottomTabNavigator;

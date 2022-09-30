@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+import {Colors} from '~/themes/colors';
 import {Body02} from '~/themes/typography';
 export const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
@@ -17,8 +18,8 @@ export const SearchBar = () => {
           <View style={styles.searchTextGrp}>
             <View style={styles.searchIcon}>
               <Image
-                style={{tintColor: 'black', width: 18, height: 18}}
-                source={require('~/assets/images/search.png')}
+                style={{tintColor: Colors.Grey_05, width: 18, height: 18}}
+                source={require('~/assets/images/vectorIcon/search.png')}
               />
             </View>
             <TextInput
@@ -29,8 +30,8 @@ export const SearchBar = () => {
           </View>
           <View style={styles.filter}>
             <Image
-              style={{tintColor: 'black', width: 19, height: 19}}
-              source={require('~/assets/images/filter.png')}
+              style={{tintColor: Colors.Grey_05, width: 19, height: 19}}
+              source={require('~/assets/images/vectorIcon/filter2.png')}
             />
           </View>
         </View>

@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { Component, useEffect } from 'react';
+import React, {Component, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -19,47 +19,35 @@ import {
   View,
   Button,
 } from 'react-native';
-import { NavigationContainer, DrawerActions } from '@react-navigation/native';
+import {NavigationContainer, DrawerActions} from '@react-navigation/native';
 
-
-const ProfilePage = ({ navigation, route }: any) => {
+const ProfilePage = ({navigation, route}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
   const drawerNavigation = navigation.getParent('MyDrawer');
-  useEffect (() => {
-    navigation.addListener('focus', () => {
-
-      navigation.dispatch(DrawerActions.openDrawer)
-
-    });
-    navigation.addListener('tabPress', () => {
-
-      navigation.dispatch(DrawerActions.openDrawer)
-
-    });
-
-  })
-
+  useEffect(() => {
+    // navigation.addListener('focus', () => {
+    //   navigation.dispatch(DrawerActions.openDrawer)
+    // });
+    // navigation.addListener('tabPress', () => {
+    //   navigation.dispatch(DrawerActions.openDrawer)
+    // });
+  }, []);
 
   return (
-
     <View style={styles.pageContainer}>
-
       <Button title="Open drawer" onPress={() => navigation.openDrawer()} />
       <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
-
     </View>
-
   );
 };
 
 const styles = StyleSheet.create({
   pageContainer: {
-    flex:1,
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#ffffff'
-  }
-
+    backgroundColor: '#ffffff',
+  },
 });
 
 export default ProfilePage;

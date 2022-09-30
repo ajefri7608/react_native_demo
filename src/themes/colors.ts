@@ -9,4 +9,5 @@ export const Colors = {
   Grey_02: '#eeeeee',
   Grey_03: '#bcbcbc',
   Grey_04: '#a9a9a9',
+  Grey_05: '#585858',
 };
