@@ -17,13 +17,17 @@ import {
   Image,
   StatusBar,
   SafeAreaView,
+  Pressable,
   FlatList,
+  ListRenderItemInfo,
 } from 'react-native';
+
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import LoginBox from '~/view/component/login/LoginBox';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import ProductGridItem from '../component/product/ProductGridItem';
 import {SearchBar} from '~/view/component/search/SearchBar';
+import {CategoryIcon} from '../component/product/CategoryIcon';
+import {CategoryIconItem} from '~/model/product/product';
 
 const DATA = [
   {
@@ -40,36 +44,60 @@ const DATA = [
     price: 100,
     productImage: '',
   },
-  // {
-  //   brand: 'John Jacobs',
-  //   type: 'EyeGlasses',
-  //   name: 'Jobn Jacobs Blue Reactangle Eyeglasses',
-  //   price: 100,
-  //   productImage: '',
-  // },
-  // {
-  //   brand: 'John Jacobs',
-  //   type: 'EyeGlasses',
-  //   name: 'Jobn Jacobs Blue Reactangle Eyeglasses',
-  //   price: 100,
-  //   productImage: '',
-  // },
-  // {
-  //   brand: 'John Jacobs',
-  //   type: 'EyeGlasses',
-  //   name: 'Jobn Jacobs Blue Reactangle Eyeglasses',
-  //   price: 100,
-  //   productImage: '',
-  // },
+];
+const CategoryIconData = [
+  {
+    name: 'For you',
+    itemName: 'For you',
+    icon: require('~/assets/gif/lottie/heart.gif'),
+  },
+  {
+    name: 'aaa',
+    itemName: 'bbb',
+    icon: require('~/assets/images/vectorIcon/truck.png'),
+  },
+  {
+    name: 'aaa',
+    itemName: 'bbb',
+    icon: require('~/assets/images/vectorIcon/truck.png'),
+  },
+  {
+    name: 'aaa',
+    itemName: 'bbb',
+    icon: require('~/assets/images/vectorIcon/truck.png'),
+  },
+  {
+    name: 'aaa',
+    itemName: 'bbb',
+    icon: require('~/assets/gif/lottie/heart.gif'),
+  },
 ];
 
-const SearchPage = ({navigation}: any) => {
+const SearchPage = () => {
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();
   const renderItem = ({item}: any) => <ProductGridItem title={item.title} />;
+
+  const renderCategoryIconItem = ({
+    item,
+  }: ListRenderItemInfo<CategoryIconItem>) => {
+    return <CategoryIcon {...item}></CategoryIcon>;
+  };
   return (
-    <View style={[styles.container, {paddingTop: insets.top}]}>
+    <View
+      style={[
+        styles.container,
+        {paddingTop: insets.top, paddingBottom: tabBarHeight},
+      ]}>
       <SearchBar />
+      <FlatList
+        horizontal
+        data={CategoryIconData}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        renderItem={renderCategoryIconItem}
+        style={{height: 140, marginBottom: 10}}
+      />
       <FlatList
         numColumns={1}
         data={DATA}

@@ -17,8 +17,8 @@ export default function ProductGridItem({title}: any) {
       />
       <View style={styles.textContainer}>
         <View style={styles.titleGrp}>
-          <Text style={Body01}>2018 凌志 LEXUS</Text>
-          <Text style={Header03}>200,000</Text>
+          <Text style={Body01}>2017 TOYOTA</Text>
+          <Text style={Body02}>200,000</Text>
         </View>
 
         <Text style={[styles.bodyText, Body02]}>2 seats</Text>
