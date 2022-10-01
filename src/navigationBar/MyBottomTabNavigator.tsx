@@ -49,22 +49,25 @@ const MyBottomTabNavigator = () => {
           <Image
             source={icon}
             style={{
-              width: focused ? 21 : 19,
-              height: focused ? 21 : 19,
-              tintColor: Colors.Grey_05,
+              width: 21,
+              height: 21,
+              tintColor: focused ? '#00c090' : '#748c94',
             }}
           />
         </Animated.View>
-        <Text
-          style={[
-            {
-              color: focused ? '#e32f45' : '#748c94',
-              paddingTop: 8,
-              fontSize: 13,
-            },
-          ]}>
-          {name}
-        </Text>
+        {focused ? (
+          <Text
+            style={[
+              {
+                color: '#748c94',
+                fontSize: 12,
+              },
+            ]}>
+            {name}
+          </Text>
+        ) : (
+          <></>
+        )}
       </View>
     );
   };

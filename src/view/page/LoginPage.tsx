@@ -19,6 +19,7 @@ import {CommonActions} from '@react-navigation/native';
 import Loading from '../component/common/Loading';
 import LoginIconList from '../component/login/LoginIconList';
 import {Body03} from '~/themes/typography';
+import {Colors} from '~/themes/colors';
 
 const LoginPage = () => {
   const insets = useSafeAreaInsets();
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 0,
     marginBottom: 0,
-    color: '#fad126',
+    color: Colors.Grey_05,
   },
   textInput: {
     borderBottomWidth: 1,
@@ -136,8 +137,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   loginBadge: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
   },
 });
 
