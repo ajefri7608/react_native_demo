@@ -52,23 +52,38 @@ const CategoryIconData = [
     icon: require('~/assets/gif/lottie/heart.gif'),
   },
   {
-    name: 'aaa',
-    itemName: 'bbb',
-    icon: require('~/assets/images/vectorIcon/truck.png'),
+    name: 'For you',
+    itemName: 'For you',
+    icon: require('~/assets/gif/lottie/heart.gif'),
   },
   {
-    name: 'aaa',
-    itemName: 'bbb',
-    icon: require('~/assets/images/vectorIcon/truck.png'),
+    name: 'For you',
+    itemName: 'For you',
+    icon: require('~/assets/gif/lottie/heart.gif'),
   },
   {
-    name: 'aaa',
-    itemName: 'bbb',
-    icon: require('~/assets/images/vectorIcon/truck.png'),
+    name: 'For you',
+    itemName: 'For you',
+    icon: require('~/assets/gif/lottie/heart.gif'),
   },
   {
-    name: 'aaa',
-    itemName: 'bbb',
+    name: 'For you',
+    itemName: 'For you',
+    icon: require('~/assets/gif/lottie/heart.gif'),
+  },
+  {
+    name: 'For you',
+    itemName: 'For you',
+    icon: require('~/assets/gif/lottie/heart.gif'),
+  },
+  {
+    name: 'For you',
+    itemName: 'For you',
+    icon: require('~/assets/gif/lottie/heart.gif'),
+  },
+  {
+    name: 'For you',
+    itemName: 'For you',
     icon: require('~/assets/gif/lottie/heart.gif'),
   },
 ];
@@ -96,7 +111,12 @@ const SearchPage = () => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         renderItem={renderCategoryIconItem}
-        style={{height: 140, marginBottom: 10}}
+        disableIntervalMomentum={true}
+        decelerationRate={0.0}
+        scrollEventThrottle={1}
+        pagingEnabled={true}
+        windowSize={5}
+        style={{height: 140}}
       />
       <FlatList
         numColumns={1}

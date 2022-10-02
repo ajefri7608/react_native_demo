@@ -1,24 +1,27 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
 import MyBottomTabNavigator from './MyBottomTabNavigator';
-import { MyCustomDrawerContent } from './customDrawerContent/MyCutsomDrawerContent';
+import {MyCustomDrawerContent} from './customDrawerContent/MyCutsomDrawerContent';
+import {ProductDetail} from '~/view/component/product/ProductDetail';
 const Drawer = createDrawerNavigator();
 
 const MyDrawerNavigator = () => {
   return (
     <Drawer.Navigator
-      drawerContent={(props) => <MyCustomDrawerContent {...props} />}
+      drawerContent={props => <MyCustomDrawerContent {...props} />}
       id="MyDrawer"
       screenOptions={{
-        drawerStyle:{
-          width:220
+        drawerStyle: {
+          width: 220,
         },
-        drawerPosition:"right"
+        drawerPosition: 'right',
       }}>
-      <Drawer.Screen name="MyBottomTabNavigator"
+      <Drawer.Screen
+        name="MyBottomTabNavigator"
         component={MyBottomTabNavigator}
-        options={{ headerShown: false }} />
+        options={{headerShown: false}}
+      />
     </Drawer.Navigator>
   );
-}
-export default MyDrawerNavigator
+};
+export default MyDrawerNavigator;

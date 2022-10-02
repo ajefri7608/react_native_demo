@@ -31,13 +31,19 @@ export const Body01SemiBold = {
 } as TextStyle;
 
 export const Body01 = {
-  fontFamily: 'RobotoSlab-SemiBold',
+  fontFamily: 'RobotoSlab-Regular',
   fontSize: 16,
   letterSpacing: 0,
 } as TextStyle;
 
 export const Body02 = {
   fontFamily: 'RobotoSlab-Regular',
+  fontSize: 14,
+  letterSpacing: 0,
+} as TextStyle;
+
+export const Body02SemiBold = {
+  fontFamily: 'RobotoSlab-SemiBold',
   fontSize: 14,
   letterSpacing: 0,
 } as TextStyle;

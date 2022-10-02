@@ -17,7 +17,7 @@ export const CategoryIcon = (item: CategoryIconItem) => {
 const styles = StyleSheet.create({
   containerShadow: {
     width: 80,
-    height: 95,
+    height: 85,
     borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: {
@@ -43,5 +43,5 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
   },
-  text: {paddingTop: 5},
+  text: {},
 });

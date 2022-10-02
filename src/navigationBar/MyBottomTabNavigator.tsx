@@ -7,6 +7,7 @@ import SearchPage from '~/view/page/SearchPage';
 import ProfilePage from '~/view/page/ProfilePage';
 import {StyleSheet, Text, View, Platform, Animated, Image} from 'react-native';
 import {Colors} from '~/themes/colors';
+import MyStackNavigator from './MyStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -110,7 +111,7 @@ const MyBottomTabNavigator = () => {
             />
           ),
         }}
-        component={SearchPage}
+        component={MyStackNavigator}
       />
       <Tab.Screen
         name="Login"

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {StyleSheet, View, Image, Text, Pressable} from 'react-native';
 import {
   Body01,
   Body01SemiBold,
@@ -7,9 +7,21 @@ import {
   Header02,
   Header03,
 } from '~/themes/typography';
+import {CommonActions, useNavigation} from '@react-navigation/native';
 export default function ProductGridItem({title}: any) {
+  const navigation = useNavigation();
+  const navToProductDetail = () => {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'ProductDetail',
+        params: {
+          // user: 'jane',
+        },
+      }),
+    );
+  };
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={navToProductDetail}>
       <Image
         style={{width: '100%', height: 250, borderRadius: 9}}
         source={require('~/assets/images/car.jpg')}
@@ -24,7 +36,7 @@ export default function ProductGridItem({title}: any) {
         <Text style={[styles.bodyText, Body02]}>2 seats</Text>
         <Text style={[styles.bodyText, Body02]}>1999 cc</Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
