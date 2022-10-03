@@ -3,11 +3,16 @@ import {Pressable, StyleSheet, Text, View, Image} from 'react-native';
 import {Body03} from '~/themes/typography';
 import LottieView from 'lottie-react-native';
 import {CategoryIconItem} from '~/model/product/product';
+import FastImage from 'react-native-fast-image';
 export const CategoryIcon = (item: CategoryIconItem) => {
   return (
     <View style={styles.containerShadow}>
       <Pressable style={styles.container} onPress={() => {}}>
-        <Image style={styles.icon} source={item.icon} resizeMode={'contain'} />
+        <FastImage
+          style={styles.icon}
+          source={item.icon}
+          resizeMode={'contain'}
+        />
         <Text style={[Body03, styles.text]}>{item.name}</Text>
       </Pressable>
     </View>

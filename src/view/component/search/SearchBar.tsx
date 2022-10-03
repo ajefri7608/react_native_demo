@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
 } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import {Colors} from '~/themes/colors';
 import {Body02} from '~/themes/typography';
 export const SearchBar = () => {
@@ -17,7 +18,7 @@ export const SearchBar = () => {
         <View style={styles.searchBar}>
           <View style={styles.searchTextGrp}>
             <View style={styles.searchIcon}>
-              <Image
+              <FastImage
                 style={{tintColor: Colors.Grey_05, width: 18, height: 18}}
                 source={require('~/assets/images/vectorIcon/search.png')}
               />
@@ -29,7 +30,7 @@ export const SearchBar = () => {
             />
           </View>
           <View style={styles.filter}>
-            <Image
+            <FastImage
               style={{tintColor: Colors.Grey_05, width: 19, height: 19}}
               source={require('~/assets/images/vectorIcon/filter2.png')}
             />

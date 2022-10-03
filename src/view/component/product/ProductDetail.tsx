@@ -20,6 +20,7 @@ import {
   Header02ExtraBold,
 } from '~/themes/typography';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import FastImage from 'react-native-fast-image';
 const DATA = [
   {
     images: require('~/assets/images/car.jpg'),
@@ -57,7 +58,7 @@ export const ProductDetail = ({item}: any) => {
 
   function renderProductImage({item}: any) {
     return (
-      <Image
+      <FastImage
         style={{width: windowWidth, height: 320}}
         source={item.images}
         resizeMode={'cover'}
@@ -68,7 +69,7 @@ export const ProductDetail = ({item}: any) => {
   const FirstRoute = () => (
     <ScrollView style={styles.container}>
       <View style={styles.infoTitleGrp}>
-        <Image
+        <FastImage
           style={styles.infoIcon}
           source={require('~/assets/images/vectorIcon/info.png')}
         />

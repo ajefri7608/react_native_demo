@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Image, Text, Pressable} from 'react-native';
 import {Body01, Body02} from '~/themes/typography';
 import {CommonActions, useNavigation} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 export default function ProductGridItem({title}: any) {
   const navigation = useNavigation();
   const navToProductDetail = () => {
@@ -17,7 +18,7 @@ export default function ProductGridItem({title}: any) {
   return (
     <Pressable style={styles.container} onPress={navToProductDetail}>
       <View style={styles.productImage}>
-        <Image
+        <FastImage
           style={{width: '100%', height: '100%'}}
           source={require('~/assets/images/car.jpg')}
           resizeMode={'cover'}

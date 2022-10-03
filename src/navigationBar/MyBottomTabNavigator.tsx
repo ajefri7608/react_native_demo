@@ -8,6 +8,7 @@ import ProfilePage from '~/view/page/ProfilePage';
 import {StyleSheet, Text, View, Platform, Animated, Image} from 'react-native';
 import {Colors} from '~/themes/colors';
 import MyStackNavigator from './MyStackNavigator';
+import FastImage from 'react-native-fast-image';
 
 const Tab = createBottomTabNavigator();
 
@@ -155,6 +156,7 @@ const MyBottomTabNavigator = () => {
 const styles = StyleSheet.create({
   iconContainer: {
     alignItems: 'center',
+    paddingTop: 5,
   },
   tarBarStyles: {
     borderTopLeftRadius: 33,
