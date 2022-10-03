@@ -30,6 +30,15 @@ const LoginPage = () => {
   const submitBtnClick = () => {
     console.log('asdasd');
     setOnLoading(true);
+    setTimeout(() => {
+      setOnLoading(false);
+      navigation.dispatch(
+        CommonActions.navigate({
+          name: 'Search',
+          params: {},
+        }),
+      );
+    }, 3000);
   };
 
   useEffect(() => {
@@ -45,17 +54,24 @@ const LoginPage = () => {
   return (
     <View style={{flex: 1}}>
       <View style={styles.container}>
-        <LottieView
-          style={styles.logo}
-          source={require('~/assets/gif/lottie/hello.json')}
-          autoPlay
-          loop
-        />
+        <View style={styles.logoContainer}>
+          <LottieView
+            style={styles.logo}
+            resizeMode={'cover'}
+            source={require('~/assets/gif/lottie/hello.json')}
+            autoPlay
+            loop
+          />
+        </View>
         <View style={styles.loginBoxContainer}>
           <Text style={[Body03, styles.inputTitle]}>User name:</Text>
-          <TextInput style={styles.textInput} />
+          <TextInput style={styles.textInput} autoCapitalize={'none'} />
           <Text style={[Body03, styles.inputTitle]}>Password:</Text>
-          <TextInput style={styles.textInput} />
+          <TextInput
+            style={styles.textInput}
+            autoCapitalize={'none'}
+            secureTextEntry
+          />
           <View style={styles.loginBadgeShadow}>
             <Pressable
               style={styles.loginBadgeContainer}
@@ -80,33 +96,35 @@ const LoginPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: 'flex',
     flexDirection: 'column',
     paddingHorizontal: 30,
     backgroundColor: 'white',
   },
-  logo: {
-    height: 250,
+  logoContainer: {
+    height: 320,
     alignSelf: 'center',
-    paddingTop: 20,
+
     backgroundColor: 'white',
   },
+  logo: {height: '100%'},
   inputTitle: {
     paddingTop: 10,
-    paddingBottom: 0,
+    paddingBottom: 10,
     marginBottom: 0,
     color: Colors.Grey_05,
   },
   textInput: {
     borderBottomWidth: 1,
     borderBottomColor: '#321abc',
-    paddingVertical: 0,
+    paddingBottom: 5,
+    paddingStart: 5,
   },
   loginBoxContainer: {
     flexDirection: 'column',
     width: '100%',
     height: 300,
     backgroundColor: 'white',
+    paddingTop: 30,
   },
   loginBadgeShadow: {
     width: 70,

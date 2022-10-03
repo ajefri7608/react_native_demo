@@ -1,12 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Image, Text, Pressable} from 'react-native';
-import {
-  Body01,
-  Body01SemiBold,
-  Body02,
-  Header02,
-  Header03,
-} from '~/themes/typography';
+import {Body01, Body02} from '~/themes/typography';
 import {CommonActions, useNavigation} from '@react-navigation/native';
 export default function ProductGridItem({title}: any) {
   const navigation = useNavigation();
@@ -22,11 +16,13 @@ export default function ProductGridItem({title}: any) {
   };
   return (
     <Pressable style={styles.container} onPress={navToProductDetail}>
-      <Image
-        style={{width: '100%', height: 250, borderRadius: 9}}
-        source={require('~/assets/images/car.jpg')}
-        resizeMode={'contain'}
-      />
+      <View style={styles.productImage}>
+        <Image
+          style={{width: '100%', height: '100%'}}
+          source={require('~/assets/images/car.jpg')}
+          resizeMode={'cover'}
+        />
+      </View>
       <View style={styles.textContainer}>
         <View style={styles.titleGrp}>
           <Text style={Body01}>2017 TOYOTA</Text>
@@ -47,6 +43,12 @@ const styles = StyleSheet.create({
 
     marginHorizontal: 20,
     marginTop: 18,
+  },
+  productImage: {
+    width: '100%',
+    height: 250,
+    borderRadius: 9,
+    overflow: 'hidden',
   },
   textContainer: {
     flexDirection: 'column',

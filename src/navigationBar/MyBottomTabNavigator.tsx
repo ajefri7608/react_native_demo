@@ -77,7 +77,10 @@ const MyBottomTabNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.tarBarStyles,
+        tabBarStyle: [
+          styles.tarBarStyles,
+          {height: Platform.OS === 'ios' ? 80 : 60},
+        ],
       }}
       id="myBottomTab">
       <Tab.Screen
@@ -159,7 +162,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     position: 'absolute',
     width: '100%',
-    height: 60,
   },
 });
 export default MyBottomTabNavigator;
