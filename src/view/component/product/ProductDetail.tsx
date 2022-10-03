@@ -7,8 +7,10 @@ import {
   Image,
   Text,
   ListRenderItem,
+  Dimensions,
+  useWindowDimensions,
 } from 'react-native';
-import {Dimensions} from 'react-native';
+
 import {Colors} from '~/themes/colors';
 import {
   Body01,
@@ -17,7 +19,7 @@ import {
   Header02,
   Header02ExtraBold,
 } from '~/themes/typography';
-
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 const DATA = [
   {
     images: require('~/assets/images/car.jpg'),
@@ -29,8 +31,30 @@ const DATA = [
     images: require('~/assets/images/car3.jpg'),
   },
 ];
+
+const SecondRoute = () => <View style={{flex: 1, backgroundColor: 'white'}} />;
+
+const renderTabBar = props => (
+  <TabBar
+    {...props}
+    indicatorStyle={{backgroundColor: 'pink'}}
+    style={{backgroundColor: 'white'}}
+    renderLabel={({route}) => (
+      <Text style={{color: Colors.Grey_05}}> {route.title}</Text>
+    )}
+  />
+);
 export const ProductDetail = ({item}: any) => {
   const windowWidth = Dimensions.get('window').width;
+
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    {key: 'first', title: 'First'},
+    {key: 'second', title: 'Second'},
+  ]);
+
   function renderProductImage({item}: any) {
     return (
       <Image
@@ -40,16 +64,9 @@ export const ProductDetail = ({item}: any) => {
       />
     );
   }
-  return (
+
+  const FirstRoute = () => (
     <ScrollView style={styles.container}>
-      <FlatList
-        horizontal
-        data={DATA}
-        renderItem={renderProductImage}
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        style={styles.imageList}
-      />
       <View style={styles.infoTitleGrp}>
         <Image
           style={styles.infoIcon}
@@ -61,13 +78,13 @@ export const ProductDetail = ({item}: any) => {
         <View style={styles.productDiscriptionRow}>
           <View style={styles.textGrp}>
             <Text style={[Header02]}>Make</Text>
-            <Text style={[Body01, {marginTop: 10, textAlign: 'right'}]}>
+            <Text style={[Body01, {marginTop: 12, textAlign: 'right'}]}>
               Toyota
             </Text>
           </View>
           <View style={styles.textGrp}>
             <Text style={[Header02]}>New/Used</Text>
-            <Text style={[Body01, {marginTop: 10, textAlign: 'right'}]}>
+            <Text style={[Body01, {marginTop: 12, textAlign: 'right'}]}>
               Brand New
             </Text>
           </View>
@@ -75,11 +92,11 @@ export const ProductDetail = ({item}: any) => {
         <View style={styles.productDiscriptionRow}>
           <View style={styles.textGrp}>
             <Text style={[Header02]}>Seat Count</Text>
-            <Text style={[Body01, {marginTop: 10}]}>5</Text>
+            <Text style={[Body01, {marginTop: 12}]}>5</Text>
           </View>
           <View style={styles.textGrp}>
             <Text style={[Header02]}>Manu. Year</Text>
-            <Text style={[Body01, {marginTop: 10, textAlign: 'right'}]}>
+            <Text style={[Body01, {marginTop: 12, textAlign: 'right'}]}>
               2020
             </Text>
           </View>
@@ -87,15 +104,41 @@ export const ProductDetail = ({item}: any) => {
         <View style={styles.productDiscriptionRow}>
           <View style={styles.textGrp}>
             <Text style={[Header02]}>Fuel Type</Text>
-            <Text style={[Body01, {marginTop: 10}]}>Electric</Text>
+            <Text style={[Body01, {marginTop: 12}]}>Electric</Text>
           </View>
           <View style={styles.textGrp}>
             <Text style={[Header02]}>Num of Door</Text>
-            <Text style={[Body01, {marginTop: 10, textAlign: 'right'}]}>4</Text>
+            <Text style={[Body01, {marginTop: 12, textAlign: 'right'}]}>4</Text>
           </View>
         </View>
       </View>
     </ScrollView>
+  );
+
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+  });
+  return (
+    <View style={styles.container}>
+      <FlatList
+        horizontal
+        data={DATA}
+        renderItem={renderProductImage}
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        style={styles.imageList}
+      />
+      <View
+        style={{width: '100%', height: 10, backgroundColor: 'white'}}></View>
+      <TabView
+        navigationState={{index, routes}}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{width: layout.width}}
+        renderTabBar={renderTabBar}
+      />
+    </View>
   );
 };
 
