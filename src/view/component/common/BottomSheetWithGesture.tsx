@@ -51,15 +51,12 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
     })
     .onChange(e => {
       'worklet';
-      if (viewHeight.value != -screenHeight) {
-        if (offset.value > -50) {
-          if (e.changeY > 0) {
-            offset.value = offset.value - e.changeY;
-          }
-        } else {
-          offset.value = -screenHeight;
-          runOnJS(param.closeBtnCallBack)();
-        }
+      console.log(offset.value, e.changeY);
+
+      if (offset.value <= 0) {
+        offset.value = offset.value - e.changeY;
+      } else if (offset.value > 0 && e.changeY < 0) {
+        offset.value = offset.value + e.changeY;
       }
     })
     .onFinalize(() => {
@@ -79,12 +76,20 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
     <Pressable
       style={[
         styles.container,
-        {height: screenHeight - useBottomTabBarHeight()},
-      ]}
-      onPress={() => {
-        offset.value = -screenHeight;
-        param.closeBtnCallBack();
-      }}>
+        {height: screenHeight + 50 - useBottomTabBarHeight()},
+      ]}>
+      <Pressable
+        onPress={() => {
+          offset.value = -screenHeight;
+          param.closeBtnCallBack();
+          console.log('xxxxx');
+        }}
+        style={{
+          width: screenWidth,
+          height: screenHeight,
+          backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        }}></Pressable>
+
       <GestureDetector gesture={gesture}>
         <Animated.View
           style={[styles.dialogContainer, animatedStyles]}
@@ -103,7 +108,6 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
     position: 'absolute',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
   dialogContainer: {
     borderTopStartRadius: 20,
@@ -113,7 +117,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: screenWidth,
     // transform: [{translateY: -999}],
+
     position: 'absolute',
+    bottom: 0,
   },
 });
 
