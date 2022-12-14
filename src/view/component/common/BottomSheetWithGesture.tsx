@@ -41,7 +41,7 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      bottom: withTiming(offset.value, {duration: 350}),
+      bottom: offset.value,
     };
   });
 
@@ -52,7 +52,6 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
     .onChange(e => {
       'worklet';
       console.log(offset.value, e.changeY);
-
       if (offset.value <= 0) {
         offset.value = offset.value - e.changeY;
       } else if (offset.value > 0 && e.changeY < 0) {
@@ -64,7 +63,7 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
     });
 
   const dialogAnimControl = (open: boolean) => {
-    offset.value = open ? 0 : 300;
+    offset.value = withTiming(open ? 0 : -screenHeight, {duration: 250});
   };
   useEffect(() => {
     dialogAnimControl(true);
@@ -80,7 +79,7 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
       ]}>
       <Pressable
         onPress={() => {
-          offset.value = -screenHeight;
+          offset.value = withTiming(-screenHeight, {duration: 250});
           param.closeBtnCallBack();
           console.log('xxxxx');
         }}
