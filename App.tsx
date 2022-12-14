@@ -9,17 +9,22 @@
  */
 
 import React from 'react';
-
+import {View} from 'react-native';
 import MyBottomTabNavigator from './src/navigationBar/MyBottomTabNavigator';
 import MyStackNavigator from '~/navigationBar/MyStackNavigator';
 import MyDrawerNavigator from '~/navigationBar/MyDrawerNavigator';
 import {NavigationContainer} from '@react-navigation/native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <MyDrawerNavigator />
-    </NavigationContainer>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <MyDrawerNavigator />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };
+//npx react-native run-android
+//npx react-native start
 export default App;

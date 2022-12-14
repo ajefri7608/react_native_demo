@@ -23,23 +23,14 @@ import BottomSheet, {
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import DragableBottomSheet from '~/view/component/common/DragableBottomSheet';
-import BottomDialog from '../component/common/BottomDialog';
-const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
-const HomePage = ({navigation}: any) => {
-  const refBottomSheet = useRef<BottomSheetRefProps>(null);
-  const [openCardDialog, setOpenCardDialog] = useState(false);
-  const triggerBottomSheet = () => {
-    const isActive = refBottomSheet?.current?.isActive?.();
+import BottomDialog, {refType} from '../component/common/BottomDialog';
 
-    if (isActive) {
-      refBottomSheet?.current?.scrollTo?.(0);
-    } else {
-      refBottomSheet?.current?.scrollTo?.(-SCREEN_HEIGHT / 2.5);
-    }
-  };
+const HomePage = ({navigation}: any) => {
+  const childRef = useRef<refType>(null);
+  const [openCardDialog, setOpenCardDialog] = useState(false);
 
   return (
-    <GestureHandlerRootView style={{flex: 1, backgroundColor: '#e5e5e5'}}>
+    <View style={{flex: 1, backgroundColor: '#e5e5e5'}}>
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.button}
@@ -47,22 +38,7 @@ const HomePage = ({navigation}: any) => {
           <Text style={{color: 'white'}}>Show Bottom Dialog</Text>
         </TouchableOpacity>
       </View>
-      <DragableBottomSheet ref={refBottomSheet}>
-        <View>
-          {Array.from(Array(5)).map((val, key) => {
-            return (
-              <View key={key} style={styles.item}>
-                <View>
-                  <Text>Hari Irawan</Text>
-                  <Text>087666673246</Text>
-                </View>
 
-                <View style={styles.radioButton}></View>
-              </View>
-            );
-          })}
-        </View>
-      </DragableBottomSheet>
       {openCardDialog ? (
         <BottomDialog
           closeBtnCallBack={() => {
@@ -70,11 +46,22 @@ const HomePage = ({navigation}: any) => {
               setOpenCardDialog(false);
             }, 350);
           }}
+          content={
+            <View
+              style={{
+                backgroundColor: 'white',
+                height: 300,
+                marginTop: 30,
+              }}>
+              <Text>aaasa</Text>
+            </View>
+          }
+          ref={childRef}
         />
       ) : (
         <></>
       )}
-    </GestureHandlerRootView>
+    </View>
   );
 };
 
