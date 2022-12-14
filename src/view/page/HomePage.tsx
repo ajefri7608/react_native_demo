@@ -23,7 +23,9 @@ import BottomSheet, {
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import DragableBottomSheet from '~/view/component/common/DragableBottomSheet';
-import BottomDialog, {refType} from '../component/common/BottomDialog';
+import BottomSheetWithGesture, {
+  refType,
+} from '../component/common/BottomSheetWithGesture';
 
 const HomePage = ({navigation}: any) => {
   const childRef = useRef<refType>(null);
@@ -40,11 +42,11 @@ const HomePage = ({navigation}: any) => {
       </View>
 
       {openCardDialog ? (
-        <BottomDialog
+        <BottomSheetWithGesture
           closeBtnCallBack={() => {
             setTimeout(() => {
               setOpenCardDialog(false);
-            }, 350);
+            }, 250);
           }}
           content={
             <View
