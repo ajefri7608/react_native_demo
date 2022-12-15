@@ -52,10 +52,14 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
     .onChange(e => {
       'worklet';
       console.log(offset.value, e.changeY);
-      if (offset.value <= 0) {
-        offset.value = offset.value - e.changeY;
-      } else if (offset.value > 0 && e.changeY < 0) {
-        offset.value = offset.value + e.changeY;
+      if (offset.value > 0 && e.changeY > 0) {
+        offset.value = 0;
+      } else if (offset.value <= 0) {
+        if (offset.value - e.changeY > 0) {
+          offset.value = 0;
+        } else {
+          offset.value = offset.value - e.changeY;
+        }
       }
     })
     .onFinalize(() => {
@@ -87,7 +91,8 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
           width: screenWidth,
           height: screenHeight,
           backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        }}></Pressable>
+        }}
+      />
 
       <GestureDetector gesture={gesture}>
         <Animated.View
