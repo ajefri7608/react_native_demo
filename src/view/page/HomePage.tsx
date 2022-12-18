@@ -46,7 +46,7 @@ const HomePage = ({navigation}: any) => {
           closeBtnCallBack={() => {
             setTimeout(() => {
               setOpenCardDialog(false);
-            }, 250);
+            }, 450);
           }}
           content={
             <View

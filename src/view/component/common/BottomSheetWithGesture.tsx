@@ -37,7 +37,7 @@ export type refType = {
 
 const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
   const offset = useSharedValue(-screenHeight);
-  const viewHeight = useSharedValue(-screenHeight);
+  const draggingDown = useSharedValue(false);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -53,17 +53,41 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
       'worklet';
       console.log(offset.value, e.changeY);
       if (offset.value > 0 && e.changeY > 0) {
+        if (e.changeY > 0) {
+          draggingDown.value = true;
+        } else {
+          draggingDown.value = false;
+        }
+
         offset.value = 0;
       } else if (offset.value <= 0) {
         if (offset.value - e.changeY > 0) {
+          if (e.changeY > 0) {
+            draggingDown.value = true;
+          } else {
+            draggingDown.value = false;
+          }
           offset.value = 0;
         } else {
+          if (e.changeY > 0) {
+            draggingDown.value = true;
+          } else {
+            draggingDown.value = false;
+          }
           offset.value = offset.value - e.changeY;
         }
       }
     })
     .onFinalize(() => {
       'worklet';
+      if (draggingDown.value) {
+        offset.value = withTiming(-screenHeight, {duration: 350});
+        runOnJS(param.closeBtnCallBack)();
+      } else {
+        offset.value = withTiming(0, {duration: 350});
+      }
+
+      // if(offset)
     });
 
   const dialogAnimControl = (open: boolean) => {
@@ -85,7 +109,6 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
         onPress={() => {
           offset.value = withTiming(-screenHeight, {duration: 250});
           param.closeBtnCallBack();
-          console.log('xxxxx');
         }}
         style={{
           width: screenWidth,
@@ -95,11 +118,7 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
       />
 
       <GestureDetector gesture={gesture}>
-        <Animated.View
-          style={[styles.dialogContainer, animatedStyles]}
-          onLayout={e => {
-            viewHeight.value = e.nativeEvent.layout.height;
-          }}>
+        <Animated.View style={[styles.dialogContainer, animatedStyles]}>
           {param.content}
         </Animated.View>
       </GestureDetector>
