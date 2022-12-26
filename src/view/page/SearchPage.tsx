@@ -111,12 +111,8 @@ const SearchPage = () => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         renderItem={renderCategoryIconItem}
-        disableIntervalMomentum={true}
-        decelerationRate={0.0}
-        scrollEventThrottle={1}
-        pagingEnabled={true}
-        windowSize={5}
         style={{height: 140}}
+        contentContainerStyle={{paddingStart: 16}}
       />
       <FlatList
         numColumns={1}

@@ -81,17 +81,17 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
     .onFinalize(() => {
       'worklet';
       if (draggingDown.value) {
-        offset.value = withTiming(-screenHeight, {duration: 350});
+        offset.value = withTiming(-screenHeight, {duration: 550});
         runOnJS(param.closeBtnCallBack)();
       } else {
-        offset.value = withTiming(0, {duration: 350});
+        offset.value = withTiming(0, {duration: 550});
       }
 
       // if(offset)
     });
 
   const dialogAnimControl = (open: boolean) => {
-    offset.value = withTiming(open ? 0 : -screenHeight, {duration: 250});
+    offset.value = withTiming(open ? 0 : -screenHeight, {duration: 550});
   };
   useEffect(() => {
     dialogAnimControl(true);
