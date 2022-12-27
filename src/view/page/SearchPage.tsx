@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {
   StyleSheet,
   useColorScheme,
@@ -28,6 +28,10 @@ import ProductGridItem from '../component/product/ProductGridItem';
 import {SearchBar} from '~/view/component/search/SearchBar';
 import {CategoryIcon} from '../component/product/CategoryIcon';
 import {CategoryIconItem} from '~/model/product/product';
+import BottomSheetWithGesture, {
+  refType,
+} from '../component/common/BottomSheetWithGesture';
+import {ProductFilter} from '../component/product/ProductFilter';
 
 const DATA = [
   {
@@ -91,6 +95,8 @@ const CategoryIconData = [
 const SearchPage = () => {
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();
+  const [openFilter, setOpenFilter] = useState(false);
+  const childRef = useRef<refType>(null);
   const renderItem = ({item}: any) => <ProductGridItem title={item.title} />;
 
   const renderCategoryIconItem = ({
@@ -98,13 +104,31 @@ const SearchPage = () => {
   }: ListRenderItemInfo<CategoryIconItem>) => {
     return <CategoryIcon {...item}></CategoryIcon>;
   };
+
+  const renderFilter = () => {
+    return (
+      <BottomSheetWithGesture
+        closeBtnCallBack={() => {
+          setTimeout(() => {
+            setOpenFilter(false);
+          }, 450);
+        }}
+        content={<ProductFilter />}
+        ref={childRef}
+      />
+    );
+  };
   return (
     <View
       style={[
         styles.container,
         {paddingTop: insets.top, paddingBottom: tabBarHeight},
       ]}>
-      <SearchBar />
+      <SearchBar
+        filterBtnOnPress={() => {
+          setOpenFilter(true);
+        }}
+      />
       <FlatList
         horizontal
         data={CategoryIconData}
@@ -120,6 +144,7 @@ const SearchPage = () => {
         showsVerticalScrollIndicator={false}
         renderItem={renderItem}
       />
+      {openFilter ? renderFilter() : <></>}
     </View>
   );
 };

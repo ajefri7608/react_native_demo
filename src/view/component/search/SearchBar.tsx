@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -10,10 +11,15 @@ import {
 import FastImage from 'react-native-fast-image';
 import {Colors} from '~/themes/colors';
 import {Body02} from '~/themes/typography';
-export const SearchBar = () => {
+
+type Param = {
+  filterBtnOnPress: () => void;
+};
+export const SearchBar = (param: Param) => {
   const [searchText, setSearchText] = useState('');
+
   return (
-    <Pressable style={styles.container} onPress={() => {}}>
+    <View style={styles.container}>
       <View style={styles.searchBarShadow}>
         <View style={styles.searchBar}>
           <View style={styles.searchTextGrp}>
@@ -29,15 +35,19 @@ export const SearchBar = () => {
               value={searchText}
             />
           </View>
-          <View style={styles.filter}>
+          <Pressable
+            style={styles.filter}
+            onPress={() => {
+              param.filterBtnOnPress();
+            }}>
             <FastImage
               style={{tintColor: Colors.Grey_05, width: 19, height: 19}}
               source={require('~/assets/images/vectorIcon/filter2.png')}
             />
-          </View>
+          </Pressable>
         </View>
       </View>
-    </Pressable>
+    </View>
   );
 };
 
