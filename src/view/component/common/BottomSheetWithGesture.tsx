@@ -133,9 +133,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   dialogContainer: {
-    borderTopStartRadius: 20,
+    borderTopStartRadius: 33,
 
-    borderTopEndRadius: 20,
+    borderTopEndRadius: 33,
     backgroundColor: 'white',
     flexDirection: 'column',
     width: screenWidth,

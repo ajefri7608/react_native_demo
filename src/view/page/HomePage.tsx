@@ -53,7 +53,7 @@ const HomePage = ({navigation}: any) => {
               style={{
                 backgroundColor: 'white',
                 height: 300,
-                marginTop: 10,
+                marginTop: 30,
               }}>
               <Text>aaasa</Text>
             </View>
