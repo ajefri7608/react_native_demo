@@ -42,6 +42,8 @@
 		0E83D78328D1B00500F346F2 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E83D76F28D1AF5300F346F2 /* RobotoSlab-Regular.ttf */; };
 		0E83D78428D1B00500F346F2 /* RobotoSlab-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E83D77028D1AF5300F346F2 /* RobotoSlab-SemiBold.ttf */; };
 		0E83D78528D1B00500F346F2 /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E83D77228D1AF5300F346F2 /* RobotoSlab-Thin.ttf */; };
+		0E848FE7296E8B030054388B /* LaunchScreen3.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E848FE6296E8B030054388B /* LaunchScreen3.storyboard */; };
+		0E848FE8296E91810054388B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		0F8A5DA5AACB33ABB5D24EB1 /* libPods-ReactNativeDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6D369B9F8C438B1A0276C /* libPods-ReactNativeDemo.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -73,6 +75,7 @@
 		0E83D77028D1AF5300F346F2 /* RobotoSlab-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-SemiBold.ttf"; path = "../src/assets/fonts/RobotoSlab-SemiBold.ttf"; sourceTree = "<group>"; };
 		0E83D77128D1AF5300F346F2 /* RobotoSlab-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-ExtraBold.ttf"; path = "../src/assets/fonts/RobotoSlab-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0E83D77228D1AF5300F346F2 /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-Thin.ttf"; path = "../src/assets/fonts/RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
+		0E848FE6296E8B030054388B /* LaunchScreen3.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen3.storyboard; sourceTree = "<group>"; };
 		0EBFF6BD28B768B30096E6D4 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		0EBFF6BE28B768B30096E6D4 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		0EBFF6BF28B768B30096E6D4 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
@@ -101,7 +104,6 @@
 		466952864E32CA7AE2E3E205 /* Pods-ReactNativeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeDemo.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeDemo/Pods-ReactNativeDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		56F5C4AA4EB206A3DA6DD9DD /* Pods-ReactNativeDemo-ReactNativeDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeDemo-ReactNativeDemoTests.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeDemo-ReactNativeDemoTests/Pods-ReactNativeDemo-ReactNativeDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		630A220841984384A551F46B /* RobotoSlab-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoSlab-ExtraBold.ttf"; path = "../src/assets/fonts/RobotoSlab-ExtraBold.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ReactNativeDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91183C538A9D427BB88005C0 /* RobotoSlab-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoSlab-Black.ttf"; path = "../src/assets/fonts/RobotoSlab-Black.ttf"; sourceTree = "<group>"; };
 		9349BA644CCEDCBF73324378 /* Pods-ReactNativeDemo-ReactNativeDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeDemo-ReactNativeDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeDemo-ReactNativeDemoTests/Pods-ReactNativeDemo-ReactNativeDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BB6D369B9F8C438B1A0276C /* libPods-ReactNativeDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativeDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,8 +191,8 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				0E848FE6296E8B030054388B /* LaunchScreen3.storyboard */,
 			);
 			name = ReactNativeDemo;
 			sourceTree = "<group>";
@@ -387,10 +389,12 @@
 				0E83D77E28D1B00500F346F2 /* RobotoSlab-Bold.ttf in Resources */,
 				0E83D77F28D1B00500F346F2 /* RobotoSlab-ExtraBold.ttf in Resources */,
 				0E83D78028D1B00500F346F2 /* RobotoSlab-ExtraLight.ttf in Resources */,
+				0E848FE8296E91810054388B /* Images.xcassets in Resources */,
 				0E83D78128D1B00500F346F2 /* RobotoSlab-Light.ttf in Resources */,
 				0E83D78228D1B00500F346F2 /* RobotoSlab-Medium.ttf in Resources */,
 				0E83D78328D1B00500F346F2 /* RobotoSlab-Regular.ttf in Resources */,
 				0E83D78428D1B00500F346F2 /* RobotoSlab-SemiBold.ttf in Resources */,
+				0E848FE7296E8B030054388B /* LaunchScreen3.storyboard in Resources */,
 				0E83D78528D1B00500F346F2 /* RobotoSlab-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,7 +633,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 466952864E32CA7AE2E3E205 /* Pods-ReactNativeDemo.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R8WAFF68Y8;
@@ -656,7 +661,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FE87D4177211EA789FF47773 /* Pods-ReactNativeDemo.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R8WAFF68Y8;
