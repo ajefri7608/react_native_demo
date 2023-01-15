@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
-import {View} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {screenWidth} from '~/themes/measure';
 import {DropDownList} from '../common/DropDownList';
 
@@ -21,7 +20,9 @@ export const ProductFilter = () => {
             setCurrentExpandList(-1);
           }
         }}
+        itemOnPressCallBack={() => {}}
       />
+      <Text>21321</Text>
     </View>
   );
 };
@@ -29,5 +30,8 @@ export const ProductFilter = () => {
 const styles = StyleSheet.create({
   container: {
     height: 300,
+    padding: 15,
+    flexDirection: 'column',
+    // alignItems: 'center',
   },
 });
