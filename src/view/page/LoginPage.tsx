@@ -85,7 +85,7 @@ const LoginPage = () => {
               <Text style={Body03}>login</Text>
             </Pressable>
           </View>
-          <LoginIconList></LoginIconList>
+          <LoginIconList />
         </View>
       </View>
       {onLoading ? <Loading /> : <></>}
@@ -99,14 +99,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingHorizontal: 30,
     backgroundColor: 'white',
+    justifyContent: 'space-between',
   },
   logoContainer: {
     height: 280,
     alignSelf: 'center',
-
     backgroundColor: 'white',
+    overflow: 'hidden',
   },
-  logo: {height: '100%'},
+  logo: {height: 280},
   inputTitle: {
     paddingTop: 10,
     paddingBottom: 10,
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
   loginBoxContainer: {
     flexDirection: 'column',
     width: '100%',
-    height: 300,
+
     backgroundColor: 'white',
     paddingTop: 20,
   },
