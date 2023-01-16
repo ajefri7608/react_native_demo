@@ -60,6 +60,7 @@ export const Rating = (param: Param) => {
         <Image
           source={i <= rating - 1 ? ratingFilled : ratingEmpty}
           style={[styles.ratingImg, i <= rating - 1 ? {tintColor: 'red'} : {}]}
+          key={`ratingItem${i}`}
         />,
       );
     }
