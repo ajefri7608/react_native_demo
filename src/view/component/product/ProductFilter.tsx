@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {View, StyleSheet, Image, Text, Pressable} from 'react-native';
+import {ProductFilterOptions} from '~/model/product/product';
 import {Colors} from '~/themes/colors';
 import {Body02, Body03} from '~/themes/typography';
 import {DropDownList} from '../common/DropDownList';
+import {Rating} from '../common/Rating';
 
 const DATA = ['item1', 'item2', 'item3', 'item4', 'item5'];
 const checkBoxFilledImg = require('~/assets/images/vectorIcon/check_box_filled.png');
@@ -13,6 +15,7 @@ export const ProductFilter = () => {
   const [dropDownListSelectedItemIndex, setDropDownListSelectedItemIndex] =
     useState<number>();
   const [checkBoxState, setCheckBoxState] = useState(false);
+
   return (
     <View style={styles.container}>
       <DropDownList
@@ -38,13 +41,16 @@ export const ProductFilter = () => {
           {checkBoxState ? 'checked' : 'not check'}
         </Text>
       </Pressable>
+      <View style={styles.ratingContainer}>
+        <Rating ratingChangedCallBack={() => {}} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: 300,
+    height: 350,
     marginVertical: 20,
     marginHorizontal: 15,
     flexDirection: 'column',
@@ -57,9 +63,13 @@ const styles = StyleSheet.create({
   checkbox: {
     width: 21,
     height: 21,
-    tintColor: Colors.Grey_04,
+    tintColor: Colors.Grey_05,
   },
   checkBoxText: {
     marginStart: 5,
+    color: Colors.Grey_05,
+  },
+  ratingContainer: {
+    marginTop: 10,
   },
 });

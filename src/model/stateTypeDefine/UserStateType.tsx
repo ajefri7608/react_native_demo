@@ -1,8 +1,8 @@
-import { LoginResponse } from "~/model/response/LoginResponse";
+import {LoginResponse} from '~/model/response/LoginResponse';
 
 export type UserStateType = {
-    memberProfile: LoginResponse | null;
-    isLogin: Boolean | null;
-    userName: string | "",
-    password: string | ""
-}
+  memberProfile: LoginResponse | null;
+  isLogin: Boolean | null;
+  userName: string | '';
+  password: string | '';
+};
