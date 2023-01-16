@@ -2,14 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {Pressable, Text, View, Image} from 'react-native';
 import {StyleSheet} from 'react-native';
 import Animated, {
-  color,
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 import {Colors} from '~/themes/colors';
-import {Body02, Body03} from '~/themes/typography';
+import {Body02} from '~/themes/typography';
 
 type Param = {
   title: string;
@@ -54,7 +53,11 @@ export const DropDownList = (param: Param) => {
     <Animated.View style={[styles.container, expandAnimatedStyles]}>
       <Pressable onPress={() => param.titleOnPressCallBack()}>
         <View style={styles.titleContainer}>
-          <Text style={[Body02, styles.title]}>{param.title}</Text>
+          <Text style={[Body02, styles.title]}>
+            {param.selectedItem !== undefined
+              ? param.item[param.selectedItem]
+              : param.title}
+          </Text>
           {param.expanded ? (
             <Image
               style={styles.expandIcon}
@@ -68,18 +71,25 @@ export const DropDownList = (param: Param) => {
           )}
         </View>
       </Pressable>
-      <View>
+      <View style={styles.itemsContainer}>
         {param.item.map((item, index) => {
           return (
-            <View style={styles.itemContainer} key={`dropDownListItem${index}`}>
-              <Text
-                style={[
-                  styles.item,
-                  param.selectedItem === index ? {color: 'red'} : {},
-                ]}>
-                {item}
-              </Text>
-            </View>
+            <Pressable
+              onPress={() => {
+                console.log(index);
+                param.itemOnPressCallBack(index);
+              }}
+              key={`dropDownListItem${index}`}>
+              <View style={styles.itemContainer}>
+                <Text
+                  style={[
+                    styles.item,
+                    param.selectedItem === index ? {color: 'red'} : {},
+                  ]}>
+                  {item}
+                </Text>
+              </View>
+            </Pressable>
           );
         })}
       </View>
@@ -114,10 +124,15 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: 33,
     justifyContent: 'center',
-    // borderBottomWidth: 1,
-    // borderBottomColor: Colors.Grey_02,
   },
   item: {
     marginStart: 8,
+    color: Colors.Grey_05,
+  },
+  itemsContainer: {
+    borderWidth: 1,
+    borderColor: Colors.Grey_03,
+    borderRadius: 8,
+    marginTop: 10,
   },
 });

@@ -8,7 +8,6 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
 import {Colors} from '~/themes/colors';
 import {Body02} from '~/themes/typography';
 
@@ -24,8 +23,8 @@ export const SearchBar = (param: Param) => {
         <View style={styles.searchBar}>
           <View style={styles.searchTextGrp}>
             <View style={styles.searchIcon}>
-              <FastImage
-                style={{tintColor: Colors.Grey_05, width: 18, height: 18}}
+              <Image
+                style={styles.img}
                 source={require('~/assets/images/vectorIcon/search.png')}
               />
             </View>
@@ -40,8 +39,8 @@ export const SearchBar = (param: Param) => {
             onPress={() => {
               param.filterBtnOnPress();
             }}>
-            <FastImage
-              style={{tintColor: Colors.Grey_05, width: 19, height: 19}}
+            <Image
+              style={styles.img}
               source={require('~/assets/images/vectorIcon/filter2.png')}
             />
           </Pressable>
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
     ...Body02,
     marginVertical: 0,
   },
-
+  img: {tintColor: Colors.Grey_05, width: 19, height: 19},
   filter: {
     marginEnd: 20,
   },
