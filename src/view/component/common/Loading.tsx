@@ -2,6 +2,7 @@ import React from 'react';
 import {BlurView, VibrancyView} from '@react-native-community/blur';
 import {StyleSheet, View, Image} from 'react-native';
 import LottieView from 'lottie-react-native';
+import {screenHeight, screenWidth} from '~/themes/measure';
 const Loading = () => {
   return (
     <View style={styles.blurViewContainer}>
@@ -22,8 +23,8 @@ const Loading = () => {
 };
 const styles = StyleSheet.create({
   blurViewContainer: {
-    height: '100%',
-    width: '100%',
+    height: screenHeight,
+    width: screenWidth,
     position: 'absolute',
     flex: 1,
     justifyContent: 'center',
