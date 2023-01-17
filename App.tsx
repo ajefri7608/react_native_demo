@@ -9,9 +9,6 @@
  */
 
 import React from 'react';
-import {View} from 'react-native';
-import MyBottomTabNavigator from './src/navigationBar/MyBottomTabNavigator';
-import MyStackNavigator from '~/navigationBar/MyStackNavigator';
 import MyDrawerNavigator from '~/navigationBar/MyDrawerNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';

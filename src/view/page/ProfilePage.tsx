@@ -9,17 +9,7 @@
  */
 
 import React, {Component, useEffect} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Button,
-} from 'react-native';
-import {NavigationContainer, DrawerActions} from '@react-navigation/native';
+import {StyleSheet, useColorScheme, View, Button} from 'react-native';
 
 const ProfilePage = ({navigation, route}: any) => {
   const isDarkMode = useColorScheme() === 'dark';
