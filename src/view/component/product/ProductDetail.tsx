@@ -6,6 +6,7 @@ import {
   ScrollView,
   Text,
   Image,
+  Pressable,
 } from 'react-native';
 
 import {Colors} from '~/themes/colors';
@@ -20,6 +21,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import {screenWidth} from '~/themes/measure';
 import {Rating} from '../common/Rating';
+import {useNavigation, CommonActions} from '@react-navigation/native';
 const DATA = [
   {
     images: require('~/assets/images/car.jpg'),
@@ -31,8 +33,6 @@ const DATA = [
     images: require('~/assets/images/car3.jpg'),
   },
 ];
-
-const FAKEPRODUCTINFODATA = {};
 
 const SecondRoute = () => (
   <View style={styles.secondScreenContainer}>
@@ -57,6 +57,7 @@ function renderTabBar(
   );
 }
 export const ProductDetail = () => {
+  const navigation = useNavigation();
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'First'},
@@ -65,7 +66,7 @@ export const ProductDetail = () => {
 
   function renderProductImage({item}: any) {
     return (
-      <FastImage
+      <Image
         style={styles.productImg}
         source={item.images}
         resizeMode={'cover'}
@@ -129,6 +130,16 @@ export const ProductDetail = () => {
   });
   return (
     <View style={styles.container}>
+      <Pressable
+        style={styles.backBtn}
+        onPress={() => {
+          navigation.goBack();
+        }}>
+        <Image
+          style={styles.backBtnImg}
+          source={require('~/assets/images/vectorIcon/arrow_left.png')}
+        />
+      </Pressable>
       <FlatList
         horizontal
         data={DATA}
@@ -200,5 +211,24 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     padding: 40,
+  },
+
+  backBtn: {
+    position: 'absolute',
+    top: 45,
+    left: 15,
+    backgroundColor: 'white',
+    opacity: 0.8,
+    borderRadius: 48,
+    zIndex: 99,
+    padding: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backBtnImg: {
+    width: 30,
+    height: 30,
+    left: -1,
+    tintColor: Colors.Grey_05,
   },
 });

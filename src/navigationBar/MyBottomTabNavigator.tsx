@@ -75,7 +75,7 @@ const MyBottomTabNavigator = () => {
   };
   return (
     <Tab.Navigator
-      initialRouteName="SearchPage"
+      // initialRouteName="Login"
       screenOptions={{
         headerShown: false,
         tabBarStyle: [

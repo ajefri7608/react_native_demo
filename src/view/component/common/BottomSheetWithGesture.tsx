@@ -51,7 +51,7 @@ const BottomSheetWithGesture = (param: Param, ref: Ref<refType>) => {
     })
     .onChange(e => {
       'worklet';
-      console.log(offset.value, e.changeY);
+      // console.log(offset.value, e.changeY);
       if (offset.value > 0 && e.changeY > 0) {
         if (e.changeY > 0) {
           draggingDown.value = true;
