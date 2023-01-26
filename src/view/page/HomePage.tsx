@@ -9,7 +9,9 @@
  */
 
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Animated} from 'react-native';
+import {Swipeable} from 'react-native-gesture-handler';
+import {screenWidth} from '~/themes/measure';
 import BottomSheetWithGesture, {
   refType,
 } from '../component/common/BottomSheetWithGesture';

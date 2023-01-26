@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image, Text, Pressable} from 'react-native';
-import {ProductFilterOptions} from '~/model/product/product';
 import {Colors} from '~/themes/colors';
-import {Body02, Body03} from '~/themes/typography';
+import {Body02} from '~/themes/typography';
 import {DropDownList} from '../common/DropDownList';
 import {Rating} from '../common/Rating';
+import {SwipeableRow} from '../common/SwipeableRow';
 
 const DATA = ['item1', 'item2', 'item3', 'item4', 'item5'];
 const checkBoxFilledImg = require('~/assets/images/vectorIcon/check_box_filled.png');
@@ -15,6 +15,7 @@ export const ProductFilter = () => {
   const [dropDownListSelectedItemIndex, setDropDownListSelectedItemIndex] =
     useState<number>();
   const [checkBoxState, setCheckBoxState] = useState(false);
+  const [showSwipeRow, setShowSwipeRow] = useState(true);
 
   return (
     <View style={styles.container}>
@@ -41,6 +42,17 @@ export const ProductFilter = () => {
           {checkBoxState ? 'checked' : 'not check'}
         </Text>
       </Pressable>
+
+      {showSwipeRow ? (
+        <SwipeableRow
+          swipeLeftCallBack={() => {
+            setShowSwipeRow(false);
+          }}
+        />
+      ) : (
+        <></>
+      )}
+
       <View style={styles.ratingContainer}>
         <Rating ratingChangedCallBack={() => {}} />
       </View>
@@ -58,7 +70,7 @@ const styles = StyleSheet.create({
   checkBoxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 10,
+    marginVertical: 10,
   },
   checkbox: {
     width: 21,

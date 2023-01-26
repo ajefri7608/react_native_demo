@@ -7,10 +7,11 @@ import {
   Text,
   Image,
   Pressable,
+  Animated,
 } from 'react-native';
 
 import {Colors} from '~/themes/colors';
-import {Body01, Header01, Header02} from '~/themes/typography';
+import {Body01, Body02, Body03, Header01, Header02} from '~/themes/typography';
 import {
   TabView,
   SceneMap,
@@ -18,10 +19,9 @@ import {
   SceneRendererProps,
   NavigationState,
 } from 'react-native-tab-view';
-import FastImage from 'react-native-fast-image';
 import {screenWidth} from '~/themes/measure';
-import {Rating} from '../common/Rating';
-import {useNavigation, CommonActions} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+
 const DATA = [
   {
     images: require('~/assets/images/car.jpg'),
@@ -36,7 +36,7 @@ const DATA = [
 
 const SecondRoute = () => (
   <View style={styles.secondScreenContainer}>
-    <Rating ratingChangedCallBack={() => {}} />
+    <Text style={Body02}>some text</Text>
   </View>
 );
 
