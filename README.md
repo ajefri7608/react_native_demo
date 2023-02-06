@@ -1,5 +1,4 @@
 
-[![react_native_demo_video](https://i.imgur.com/mx02JoQ.jpeg)](https://www.youtube.com/watch?v=7mTNt3mzC6E)
 
+https://user-images.githubusercontent.com/27357697/216873550-4da5c196-4f26-4f1d-bc41-dbd2219b658c.mp4
 
-<video src="https://www.youtube.com/shorts/DeGHIlqkZoU"></video>
