@@ -52,41 +52,39 @@ const LoginPage = () => {
     }
   }, [isLogin]);
   return (
-    <View style={{flex: 1}}>
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <LottieView
-            style={styles.logo}
-            resizeMode={'cover'}
-            source={require('~/assets/gif/lottie/hello.json')}
-            autoPlay
-            loop
-          />
+    <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <LottieView
+          style={styles.logo}
+          resizeMode={'cover'}
+          source={require('~/assets/gif/lottie/hello.json')}
+          autoPlay
+          loop
+        />
+      </View>
+      <View style={styles.loginBoxContainer}>
+        <Text style={[Body03, styles.inputTitle]}>User name:</Text>
+        <TextInput style={styles.textInput} autoCapitalize={'none'} />
+        <Text style={[Body03, styles.inputTitle]}>Password:</Text>
+        <TextInput
+          style={styles.textInput}
+          autoCapitalize={'none'}
+          secureTextEntry
+        />
+        <View style={styles.loginBadgeShadow}>
+          <Pressable
+            style={styles.loginBadgeContainer}
+            onPress={() => submitBtnClick()}>
+            <LottieView
+              style={styles.loginBadge}
+              source={require('~/assets/gif/lottie/loginBtn2.json')}
+              autoPlay
+              loop
+            />
+            <Text style={Body03}>login</Text>
+          </Pressable>
         </View>
-        <View style={styles.loginBoxContainer}>
-          <Text style={[Body03, styles.inputTitle]}>User name:</Text>
-          <TextInput style={styles.textInput} autoCapitalize={'none'} />
-          <Text style={[Body03, styles.inputTitle]}>Password:</Text>
-          <TextInput
-            style={styles.textInput}
-            autoCapitalize={'none'}
-            secureTextEntry
-          />
-          <View style={styles.loginBadgeShadow}>
-            <Pressable
-              style={styles.loginBadgeContainer}
-              onPress={() => submitBtnClick()}>
-              <LottieView
-                style={styles.loginBadge}
-                source={require('~/assets/gif/lottie/loginBtn2.json')}
-                autoPlay
-                loop
-              />
-              <Text style={Body03}>login</Text>
-            </Pressable>
-          </View>
-          <LoginIconList></LoginIconList>
-        </View>
+        <LoginIconList />
       </View>
       {onLoading ? <Loading /> : <></>}
     </View>
@@ -99,14 +97,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingHorizontal: 30,
     backgroundColor: 'white',
+    justifyContent: 'space-evenly',
   },
   logoContainer: {
-    height: 320,
+    height: 280,
     alignSelf: 'center',
-
     backgroundColor: 'white',
+    overflow: 'hidden',
   },
-  logo: {height: '100%'},
+  logo: {height: 280},
   inputTitle: {
     paddingTop: 10,
     paddingBottom: 10,
@@ -122,9 +121,9 @@ const styles = StyleSheet.create({
   loginBoxContainer: {
     flexDirection: 'column',
     width: '100%',
-    height: 300,
+
     backgroundColor: 'white',
-    paddingTop: 30,
+    paddingTop: 20,
   },
   loginBadgeShadow: {
     width: 70,

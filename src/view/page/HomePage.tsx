@@ -9,38 +9,24 @@
  */
 
 import React, {useRef, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
-
-import BottomSheet, {
-  BottomSheetRefProps,
-} from '~/view/component/common/DragableBottomSheet';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-
-import DragableBottomSheet from '~/view/component/common/DragableBottomSheet';
+import {StyleSheet, Text, View, TouchableOpacity, Animated} from 'react-native';
+import {Swipeable} from 'react-native-gesture-handler';
+import {screenWidth} from '~/themes/measure';
 import BottomSheetWithGesture, {
   refType,
 } from '../component/common/BottomSheetWithGesture';
 
-const HomePage = ({navigation}: any) => {
+const HomePage = () => {
   const childRef = useRef<refType>(null);
   const [openCardDialog, setOpenCardDialog] = useState(false);
 
   return (
-    <View style={{flex: 1, backgroundColor: '#e5e5e5'}}>
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => setOpenCardDialog(true)}>
-          <Text style={{color: 'white'}}>Show Bottom Dialog</Text>
-        </TouchableOpacity>
-      </View>
-
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setOpenCardDialog(true)}>
+        <Text style={{color: 'white'}}>Show Bottom Dialog</Text>
+      </TouchableOpacity>
       {openCardDialog ? (
         <BottomSheetWithGesture
           closeBtnCallBack={() => {

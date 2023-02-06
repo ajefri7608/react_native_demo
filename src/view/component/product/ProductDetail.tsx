@@ -4,23 +4,24 @@ import {
   StyleSheet,
   View,
   ScrollView,
-  Image,
   Text,
-  ListRenderItem,
-  Dimensions,
-  useWindowDimensions,
+  Image,
+  Pressable,
+  Animated,
 } from 'react-native';
 
 import {Colors} from '~/themes/colors';
+import {Body01, Body02, Body03, Header01, Header02} from '~/themes/typography';
 import {
-  Body01,
-  Body01SemiBold,
-  Header01,
-  Header02,
-  Header02ExtraBold,
-} from '~/themes/typography';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import FastImage from 'react-native-fast-image';
+  TabView,
+  SceneMap,
+  TabBar,
+  SceneRendererProps,
+  NavigationState,
+} from 'react-native-tab-view';
+import {screenWidth} from '~/themes/measure';
+import {useNavigation} from '@react-navigation/native';
+
 const DATA = [
   {
     images: require('~/assets/images/car.jpg'),
@@ -33,23 +34,30 @@ const DATA = [
   },
 ];
 
-const SecondRoute = () => <View style={{flex: 1, backgroundColor: 'white'}} />;
-
-const renderTabBar = props => (
-  <TabBar
-    {...props}
-    indicatorStyle={{backgroundColor: 'pink'}}
-    style={{backgroundColor: 'white'}}
-    renderLabel={({route}) => (
-      <Text style={{color: Colors.Grey_05}}> {route.title}</Text>
-    )}
-  />
+const SecondRoute = () => (
+  <View style={styles.secondScreenContainer}>
+    <Text style={Body02}>some text</Text>
+  </View>
 );
-export const ProductDetail = ({item}: any) => {
-  const windowWidth = Dimensions.get('window').width;
 
-  const layout = useWindowDimensions();
-
+function renderTabBar(
+  props: SceneRendererProps & {
+    navigationState: NavigationState<any>;
+  },
+) {
+  return (
+    <TabBar
+      {...props}
+      indicatorStyle={styles.tabBarIndicator}
+      style={styles.tabBar}
+      renderLabel={({route}) => (
+        <Text style={{color: Colors.Grey_05}}> {route.title}</Text>
+      )}
+    />
+  );
+}
+export const ProductDetail = () => {
+  const navigation = useNavigation();
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'First'},
@@ -58,8 +66,8 @@ export const ProductDetail = ({item}: any) => {
 
   function renderProductImage({item}: any) {
     return (
-      <FastImage
-        style={{width: windowWidth, height: 320}}
+      <Image
+        style={styles.productImg}
         source={item.images}
         resizeMode={'cover'}
       />
@@ -67,13 +75,13 @@ export const ProductDetail = ({item}: any) => {
   }
 
   const FirstRoute = () => (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.firstScreenContainer}>
       <View style={styles.infoTitleGrp}>
-        <FastImage
+        <Image
           style={styles.infoIcon}
           source={require('~/assets/images/vectorIcon/info.png')}
         />
-        <Text style={Header01}>info</Text>
+        <Text style={[Header01, styles.infoTitle]}>info</Text>
       </View>
       <View style={styles.productDiscriptionContainer}>
         <View style={styles.productDiscriptionRow}>
@@ -122,6 +130,16 @@ export const ProductDetail = ({item}: any) => {
   });
   return (
     <View style={styles.container}>
+      <Pressable
+        style={styles.backBtn}
+        onPress={() => {
+          navigation.goBack();
+        }}>
+        <Image
+          style={styles.backBtnImg}
+          source={require('~/assets/images/vectorIcon/arrow_left.png')}
+        />
+      </Pressable>
       <FlatList
         horizontal
         data={DATA}
@@ -130,13 +148,12 @@ export const ProductDetail = ({item}: any) => {
         showsHorizontalScrollIndicator={false}
         style={styles.imageList}
       />
-      <View
-        style={{width: '100%', height: 10, backgroundColor: 'white'}}></View>
+      <View style={styles.divider} />
       <TabView
         navigationState={{index, routes}}
         renderScene={renderScene}
         onIndexChange={setIndex}
-        initialLayout={{width: layout.width}}
+        initialLayout={{width: screenWidth}}
         renderTabBar={renderTabBar}
       />
     </View>
@@ -148,7 +165,7 @@ const styles = StyleSheet.create({
   imageList: {height: 320, flexGrow: 0},
   productDiscriptionContainer: {
     flex: 1,
-    marginHorizontal: 18,
+
     marginVertical: 20,
     borderBottomWidth: 0.5,
     borderBottomColor: Colors.Grey_03,
@@ -157,15 +174,18 @@ const styles = StyleSheet.create({
   infoTitleGrp: {
     alignSelf: 'center',
     flexDirection: 'row',
-    alignItems: 'baseline',
+    alignItems: 'center',
+
     paddingTop: 20,
   },
   infoIcon: {
     tintColor: Colors.Grey_05,
     width: 20,
     height: 20,
-    marginEnd: 5,
-    marginTop: 5,
+    top: 1,
+  },
+  infoTitle: {
+    marginStart: 5,
   },
   productDiscriptionRow: {
     flexDirection: 'row',
@@ -175,5 +195,40 @@ const styles = StyleSheet.create({
   textGrp: {flexDirection: 'column'},
   infoText: {
     marginStart: 5,
+  },
+  tabBar: {backgroundColor: 'white'},
+  tabBarIndicator: {backgroundColor: 'pink'},
+  productImg: {width: screenWidth, height: 320},
+  divider: {height: 10, backgroundColor: 'white'},
+  firstScreenContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    marginHorizontal: 20,
+  },
+  secondScreenContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: 40,
+  },
+
+  backBtn: {
+    position: 'absolute',
+    top: 45,
+    left: 15,
+    backgroundColor: 'white',
+    opacity: 0.8,
+    borderRadius: 48,
+    zIndex: 99,
+    padding: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backBtnImg: {
+    width: 30,
+    height: 30,
+    left: -1,
+    tintColor: Colors.Grey_05,
   },
 });

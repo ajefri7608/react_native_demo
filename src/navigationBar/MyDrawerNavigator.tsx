@@ -2,7 +2,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
 import MyBottomTabNavigator from './MyBottomTabNavigator';
 import {MyCustomDrawerContent} from './customDrawerContent/MyCutsomDrawerContent';
-import {ProductDetail} from '~/view/component/product/ProductDetail';
 const Drawer = createDrawerNavigator();
 
 const MyDrawerNavigator = () => {

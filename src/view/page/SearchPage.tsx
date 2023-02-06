@@ -9,18 +9,7 @@
  */
 
 import React, {useRef, useState} from 'react';
-import {
-  StyleSheet,
-  useColorScheme,
-  View,
-  Text,
-  Image,
-  StatusBar,
-  SafeAreaView,
-  Pressable,
-  FlatList,
-  ListRenderItemInfo,
-} from 'react-native';
+import {StyleSheet, View, FlatList, ListRenderItemInfo} from 'react-native';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';

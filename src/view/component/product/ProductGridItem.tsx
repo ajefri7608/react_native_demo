@@ -3,7 +3,7 @@ import {StyleSheet, View, Image, Text, Pressable} from 'react-native';
 import {Body01, Body02} from '~/themes/typography';
 import {CommonActions, useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
-export default function ProductGridItem({title}: any) {
+export default function ProductGridItem() {
   const navigation = useNavigation();
   const navToProductDetail = () => {
     navigation.dispatch(
@@ -17,13 +17,11 @@ export default function ProductGridItem({title}: any) {
   };
   return (
     <Pressable style={styles.container} onPress={navToProductDetail}>
-      <View style={styles.productImage}>
-        <FastImage
-          style={{width: '100%', height: '100%'}}
-          source={require('~/assets/images/car.jpg')}
-          resizeMode={'cover'}
-        />
-      </View>
+      <FastImage
+        style={styles.productImage}
+        source={require('~/assets/images/car.jpg')}
+        resizeMode={'cover'}
+      />
       <View style={styles.textContainer}>
         <View style={styles.titleGrp}>
           <Text style={Body01}>2017 TOYOTA</Text>
