@@ -28,6 +28,14 @@ Install dependencies
   yarn install
 ```
 
+Install ios dependencies
+
+```bash
+  cd ./ios
+  pod install
+  cd ../
+```
+
 Start the server
 
 ```bash
@@ -39,6 +47,18 @@ run on android/ios simulator
 ```bash
   yarn android or yarn ios
 ```
+
+
+
+
+## Built With
+
+
+- React Native - A framework for building native apps using React.
+- Redux - A predictable state container for JavaScript apps.
+- TypeScript - A statically typed superset of JavaScript.
+- Axios - A promise-based HTTP client for the browser and node.js.
+- Saga - An library for handling asynchronous actions in Redux.
 
 
 
