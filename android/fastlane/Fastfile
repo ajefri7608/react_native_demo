@@ -1,0 +1,38 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "My awesome app"
+  lane :distribute do
+      build_android_app(  task: "bundle",
+      build_type: "Release",
+      print_command: false,
+      properties: {
+        "android.injected.signing.store.file" => "C:/project/react_native/react_native_demo/android/app/react_native_demo.jks",
+        "android.injected.signing.store.password" => "Abcd1234",
+        "android.injected.signing.key.alias" => "key0",
+        "android.injected.signing.key.password" => "Abcd1234",
+      })
+      # build_android_app is a built-in fastlane action.
+      release = firebase_app_distribution(
+          app: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          testers: "ajefri7608@gmail.com",
+          release_notes: "Lots of amazing new features to test out!",
+          android_artifact_type: "AAB"
+      )
+  end
+end
