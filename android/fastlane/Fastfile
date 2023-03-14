@@ -18,8 +18,8 @@ default_platform(:android)
 platform :android do
   desc "My awesome app"
   lane :distribute do
-      build_android_app(  task: "bundle",
-      build_type: "Release",
+      build_android_app(  task: "assemble",
+      build_type: "Debug",
       print_command: false,
       properties: {
         "android.injected.signing.store.file" => "C:/project/react_native/react_native_demo/android/app/react_native_demo.jks",
@@ -32,7 +32,7 @@ platform :android do
           app: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
           testers: "ajefri7608@gmail.com",
           release_notes: "Lots of amazing new features to test out!",
-          android_artifact_type: "AAB"
+          android_artifact_type: "APK"
       )
   end
 end
