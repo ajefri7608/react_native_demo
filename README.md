@@ -1,8 +1,6 @@
-
 # React Native Project
 
 A basic React Native project using Redux for state management, TypeScript for type checking, Axios for API calls, and Saga for handling asynchronous actions.
-
 
 ## Demo
 
@@ -48,11 +46,7 @@ run on android/ios simulator
   yarn android or yarn ios
 ```
 
-
-
-
 ## Built With
-
 
 - React Native - A framework for building native apps using React.
 - Redux - A predictable state container for JavaScript apps.
@@ -60,5 +54,4 @@ run on android/ios simulator
 - Axios - A promise-based HTTP client for the browser and node.js.
 - Saga - An library for handling asynchronous actions in Redux.
 
-
-
+test
