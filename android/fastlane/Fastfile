@@ -29,7 +29,7 @@ platform :android do
       })
       # build_android_app is a built-in fastlane action.
       release = firebase_app_distribution(
-          app: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          app: "1:640398890569:android:7c3d0c6b7b94fda39dd198",
           testers: "ajefri7608@gmail.com",
           release_notes: "Lots of amazing new features to test out!",
           android_artifact_type: "APK"
