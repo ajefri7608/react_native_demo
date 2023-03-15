@@ -79,19 +79,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier --write", 
+      "npx prettier --write", 
       "eslint --fix"
-    ],
-    "*.{html,scss,css,vue}": [
-      "prettier --write",
-      "stylelint --fix"
     ]
-  },
-  "*.{ts,js,vue}": [
-    "eslint --fix"
-  ],
-  "*.{html,scss,css,vue}": [
-    "prettier --write",
-    "stylelint --fix"
-  ]
+  }
 }
