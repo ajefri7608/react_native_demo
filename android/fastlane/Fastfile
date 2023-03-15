@@ -17,7 +17,7 @@ default_platform(:android)
 
 platform :android do
   desc "My awesome app"
-  lane :distribute do
+  lane :distribute do |options|
       build_android_app(  task: "assemble",
       build_type: "Debug",
       print_command: false,
@@ -30,6 +30,7 @@ platform :android do
       # build_android_app is a built-in fastlane action.
       release = firebase_app_distribution(
           app: "1:640398890569:android:7c3d0c6b7b94fda39dd198",
+          firebase_cli_token: options[:cli_token],
           testers: "ajefri7608@gmail.com",
           release_notes: "Lots of amazing new features to test out!",
           android_artifact_type: "APK"
